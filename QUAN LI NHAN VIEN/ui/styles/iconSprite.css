@@ -1,0 +1,116 @@
+.sprite-toggle{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -1153px -28px;
+	width: 24px;
+	height: 24px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.sprite-logo{
+    background: url('../assets/img/Logo_Module_TiengViet_White.66947422.svg') left top no-repeat;
+    background-size: 100px 36px;
+    width: 100px;
+    height: 36px;
+    margin-right: 36px;
+    cursor: pointer;
+}
+
+.sprite-bigarrdown{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -1129px -365px;
+	width: 14px;
+	height: 8px;
+    cursor: pointer;
+}
+
+.sprite-help{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -731px -30px;
+	width: 24px;
+	height: 24px;
+    margin: 0 12px 0 12px;
+    cursor: pointer;
+}
+
+.sprite-bell{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -787px -30px;
+	width: 24px;
+	height: 25px;
+    margin: 0 12px 0 12px;
+    cursor: pointer;
+}
+
+.sprite-bigarrdown{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -1128px -361px;
+	width: 16px;
+	height: 16px;
+    cursor: pointer;
+}
+
+.sprite-bluearrdown{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -900px -365px;
+	width: 8px;
+	height: 5px;
+    cursor: pointer;
+}
+
+.sprite-arrdown{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -467px -414px;
+	width: 10px;
+	height: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.sprite-home{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -423px -1630px;
+	width: 24px;
+	height: 24px;
+    cursor: pointer;
+}
+
+.sprite-bigarrleft{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -28px -356px;
+	width: 24px;
+	height: 24px;
+    cursor: pointer;
+}
+
+.sprite-bigarrright{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -1077px -356px;
+	width: 24px;
+	height: 24px;
+    cursor: pointer;
+}
+
+.sprite-search{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -316px -148px;
+	width: 17px;
+	height: 16px;
+    cursor: pointer;
+}
+
+.sprite-refresh{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -1098px -90px;
+	width: 20px;
+	height: 21px;
+    cursor: pointer;
+}
+
+.sprite-exit{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -144px -144px;
+	width: 24px;
+	height: 24px;
+    cursor: pointer;
+}
+
+.sprite-question{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -88px -144px;
+	width: 24px;
+	height: 24px;
+    cursor: pointer;
+}
+
+.sprite-date{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -124px -308px;
+	width: 24px;
+	height: 24px;
+}

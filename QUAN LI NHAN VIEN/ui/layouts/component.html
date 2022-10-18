@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="../styles/component.css">
+    <link rel="stylesheet" href="../assets/icofont/icofont/icofont.min.css">
+    <link rel="stylesheet" href="../styles/iconSprite.css">
+</head>
+<body>
+    <!-- ALL COMPONENT IS TEST HERE -->
+    <h1><b>Button</b></h1>
+    <div class="group">
+        <button class="ms-button">Nút chính</button>
+        <button class="ms-button-secondary">Nút phụ</button>
+        <div class="ms-iconbutton"><i class="icofont-plus icofont-1x ms-iconbutton__icon"></i></div>
+    </div>
+
+    <h1><b>Button With Icon</b></h1>
+    <div class="group">
+        <div class="ms-combo-button">
+            <div class="ms-combo-button__button">ComboButton</div>
+            <i class="icofont-rounded-down ms-combo-button__icon"></i>
+        </div>
+        <button class="ms-button-with-icon"><i class="icofont-plus ms-button-with-icon__icon"></i>ButtonIcon</button>
+    </div>
+
+    <h1><b>Textbox</b></h1>
+    <div class="group">
+        <div class="ms-textbox">
+            <div class="ms-textbox__field">Field Name</div>
+            <input type="text" class="ms-textbox__input" placeholder="Text box no Icon">
+            <div class="ms-textbox__warning">Tên trường không được để trống</div>
+        </div>
+    </div>
+
+    <h1><b>Textbox With Icon</b></h1>
+    <div class="group">
+        <div class="ms-textbox-icon">
+            <div class="ms-textbox-icon__field">Field Name</div>
+            <div class="ms-textbox-icon__wrap">
+                <input type="text" class="ms-textbox-icon__input" placeholder="Text box With Icon">
+                <div class="ms-textbox-icon__icon">
+                    <i class="icofont-search-1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1><b>Combobox</b></h1>
+    <div class="ms-cbx">
+        <label for="" class="ms-cbx__lable">Field label</label>
+        <div class="ms-cbx__box">
+            <button class="ms-cbx__box__icon">
+                <div class="arrow-down"></div>
+            </button>
+            <input type="text" class="ms-cbx__box__text" placeholder="Combobox">
+            <div class="ms-cbx__list">
+                <div class="ms-cbx__list__container">
+                    <div class="ms-cbx__list__value first-value">-Chọn giá trị-
+                        <div class="first-value__icon"></div>
+                    </div>
+                    <div class="ms-cbx__list__value">1</div>
+                    <div class="ms-cbx__list__value">2</div>
+                    <div class="ms-cbx__list__value">3</div>
+                    <div class="ms-cbx__list__value">4</div>
+                    <div class="ms-cbx__list__value">5</div>
+                    <div class="ms-cbx__list__value">6</div>
+                    <div class="ms-cbx__list__value">7</div>
+                    <div class="ms-cbx__list__value">8</div>
+                </div>
+            </div>
+        </div>
+        <div class="ms-cbx__message">Error Message</div>
+    </div>
+
+    <h1><b>Dropdown</b></h1>
+    <div class="ms-dropdown">
+        <label for="" class="ms-dropdown__lable">Field lable</label>
+        <div class="ms-dropdown__box">
+            <button class="ms-dropdown__box__icon">
+                <div class="sprite-bigarrdown"></div>
+            </button>
+            <input class="ms-dropdown__box__text" type="text" placeholder="DropdownList" readonly>
+            <div class="ms-dropdown__list">
+                <div class="ms-dropdown__list__container">
+                    <div class="ms-dropdown__list__value">1</div>
+                    <div class="ms-dropdown__list__value">2</div>
+                    <div class="ms-dropdown__list__value">3</div>
+                    <div class="ms-dropdown__list__value">4</div>
+                    <div class="ms-dropdown__list__value">5</div>
+                    <div class="ms-dropdown__list__value">6</div>
+                    <div class="ms-dropdown__list__value">7</div>
+                    <div class="ms-dropdown__list__value">8</div>
+                </div>
+            </div>
+        </div>
+        <div class="ms-dropdown__message">Error Message</div>
+    </div>
+
+    <h1><b>Dialog</b></h1>
+    <div class="ms-button" id="pop-up-dialog" style="height: 36px;">Dialog Click here!</div>
+    <div class="ms-dialog">
+        <div class="ms-dialog-wrapper">
+            <div class="ms-dialog-wrapper__header">
+                <div class="ms-dialog-wrapper__header__title">Tiêu đề</div>
+                <div class="ms-dialog-wrapper__header__exit"><i class="icofont-close"></i></div>
+            </div>
+            <div class="ms-dialog-wrapper__body">Mô tả chi tiết</div>
+            <div class="ms-dialog-wrapper__button">
+                <div class="ms-button-secondary">Button 2</div>
+                <div class="ms-button">Button 1</div>
+            </div>
+        </div>
+    </div>
+
+    <h1><b>Notification</b></h1>
+    <p>Success</p>
+    <div class="ms-notification ms-notification-success">
+        <div class="ms-notification-success__icon"></div>
+        <div class="ms-notification-success__body"> <b class="ms-notification-success__title">Thành công!</b> Công việc đã bị xóa.</div>
+        <div class="ms-notification__close"></div>
+    </div>
+
+    <p>Error</p>
+    <div class="ms-notification ms-notification-error">
+        <div class="ms-notification-error__icon"></div>
+        <div class="ms-notification-error__body"> 
+            <div><b class="ms-notification-error__title">Lỗi!</b> Không thể cập nhật được dữ liệu. Vui lòng kiểm tra lại kết nối internet.</div>
+            <div class="error-guide">Xem hướng dẫn</div>
+        </div>
+        <div class="ms-notification__close"></div>
+    </div> 
+
+    <p>Warning</p>
+    <div class="ms-notification ms-notification-warning">
+        <div class="ms-notification-warning__icon"></div>
+        <div class="ms-notification-warning__body"> <b class="ms-notification-warning__title">Cảnh báo!</b> Dữ liệu của bạn đã bị thay đổi bởi người dùng khác.</div>
+        <div class="ms-notification__close"></div>
+    </div>
+    
+    <p>Inform</p>
+    <div class="ms-notification ms-notification-inform">
+        <div class="ms-notification-inform__icon"></div>
+        <div class="ms-notification-inform__body"> <b class="ms-notification-inform__title">Thông tin!</b> Bạn nên đoc nội dung trước khi gửi phê duyệt.</div>
+        <div class="ms-notification__close"></div>
+    </div>
+
+    <h1><b>Table</b></h1>
+    <div class="group">
+        <div class="ms-table-wrapper">
+            <div class="ms-table-container">
+                <table class="ms-table">
+                    <thead class="ms-table__header">
+                        <tr class="ms-table__row__first">
+                            <th class="ms-table__col ms-table__col1 pd-left16 pd-right16">
+                                <input class="cm-checkbox" type="checkbox" name="" id="">
+                            </th>
+                            <th class="ms-table__col ms-table__col2 pd-left16 pd-right16">Văn bản</th>
+                            <th class="ms-table__col ms-table__col3 pd-left16 pd-right16 align-center">Ngày sinh</th>
+                            <th class="ms-table__col ms-table__col4 pd-left16 pd-right16 align-right">Tiền</th>
+                            <th class="ms-table__col ms-table__col5 pd-left16 pd-right16 align-center">Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody class="ms-table__body">
+                        <tr class="ms-table__row">
+                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16">
+                                <input class="cm-checkbox" type="checkbox" name="" id="">
+                            </td>
+                            <td class="ms-table__col ms-table__col2 pd-left16 pd-right16">Hai Ba</td>
+                            <td class="ms-table__col ms-table__col3 pd-left16 pd-right16 align-center">12/12/2001</td>
+                            <td class="ms-table__col ms-table__col4 pd-left16 pd-right16 align-right">12000000 </td>
+                            <td class="ms-table__col ms-table__col5 pd-left16 pd-right16 align-center col-function">
+                                <div class="ms-dropdown width70">
+                                    <div class="ms-dropdown__box">
+                                        <button class="ms-dropdown__box__icon">
+                                            <div class="sprite-bluearrdown"></div>
+                                        </button>
+                                        <input class="ms-dropdown__box__text dropdown-text-modified blue" type="text" placeholder="Sửa" readonly>
+                                        <div class="ms-dropdown__list width150">
+                                            <div class="ms-dropdown__list__container">
+                                                <div class="ms-dropdown__list__value">Nhân bản</div>
+                                                <div class="ms-dropdown__list__value">Xóa</div>
+                                                <div class="ms-dropdown__list__value">Ngừng sử dụng</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ms-table__row">
+                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16">
+                                <input class="cm-checkbox" type="checkbox" name="" id="">
+                            </td>
+                            <td class="ms-table__col ms-table__col2 pd-left16 pd-right16">Hai Ba</td>
+                            <td class="ms-table__col ms-table__col3 pd-left16 pd-right16 align-center">12/12/2001</td>
+                            <td class="ms-table__col ms-table__col4 pd-left16 pd-right16 align-right">12000000 </td>
+                            <td class="ms-table__col ms-table__col5 pd-left16 pd-right16 align-center col-function">
+                                <div class="ms-dropdown width70">
+                                    <div class="ms-dropdown__box">
+                                        <button class="ms-dropdown__box__icon">
+                                            <div class="sprite-bluearrdown"></div>
+                                        </button>
+                                        <input class="ms-dropdown__box__text dropdown-text-modified blue" type="text" placeholder="Sửa" readonly>
+                                        <div class="ms-dropdown__list width150">
+                                            <div class="ms-dropdown__list__container">
+                                                <div class="ms-dropdown__list__value">Nhân bản</div>
+                                                <div class="ms-dropdown__list__value">Xóa</div>
+                                                <div class="ms-dropdown__list__value">Ngừng sử dụng</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ms-table__row">
+                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16">
+                                <input class="cm-checkbox" type="checkbox" name="" id="">
+                            </td>
+                            <td class="ms-table__col ms-table__col2 pd-left16 pd-right16">Hai Ba</td>
+                            <td class="ms-table__col ms-table__col3 pd-left16 pd-right16 align-center">12/12/2001</td>
+                            <td class="ms-table__col ms-table__col4 pd-left16 pd-right16 align-right">12000000 </td>
+                            <td class="ms-table__col ms-table__col5 pd-left16 pd-right16 align-center col-function">
+                                <div class="ms-dropdown width70">
+                                    <div class="ms-dropdown__box">
+                                        <button class="ms-dropdown__box__icon">
+                                            <div class="sprite-bluearrdown"></div>
+                                        </button>
+                                        <input class="ms-dropdown__box__text dropdown-text-modified blue" type="text" placeholder="Sửa" readonly>
+                                        <div class="ms-dropdown__list width150">
+                                            <div class="ms-dropdown__list__container">
+                                                <div class="ms-dropdown__list__value">Nhân bản</div>
+                                                <div class="ms-dropdown__list__value">Xóa</div>
+                                                <div class="ms-dropdown__list__value">Ngừng sử dụng</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="ms-table__row">
+                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16">
+                                <input class="cm-checkbox" type="checkbox" name="" id="">
+                            </td>
+                            <td class="ms-table__col ms-table__col2 pd-left16 pd-right16">Hai Ba</td>
+                            <td class="ms-table__col ms-table__col3 pd-left16 pd-right16 align-center">12/12/2001</td>
+                            <td class="ms-table__col ms-table__col4 pd-left16 pd-right16 align-right">12000000 </td>
+                            <td class="ms-table__col ms-table__col5 pd-left16 pd-right16 align-center col-function">
+                                <div class="ms-dropdown width70">
+                                    <div class="ms-dropdown__box">
+                                        <button class="ms-dropdown__box__icon">
+                                            <div class="sprite-bluearrdown"></div>
+                                        </button>
+                                        <input class="ms-dropdown__box__text dropdown-text-modified blue" type="text" placeholder="Sửa" readonly>
+                                        <div class="ms-dropdown__list width150">
+                                            <div class="ms-dropdown__list__container">
+                                                <div class="ms-dropdown__list__value">Nhân bản</div>
+                                                <div class="ms-dropdown__list__value">Xóa</div>
+                                                <div class="ms-dropdown__list__value">Ngừng sử dụng</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="ms-table-footer">
+                <div class="ms-table-footer__left">
+                    Tổng : <b>4</b>
+                </div>
+                <div class="ms-table-footer__right">
+                    <div class="ms-table-footer__right__limit">
+                        <span style="color: #666666;">Số bản ghi/trang:</span>
+                        <div class="ms-dropdown width40">
+                            <div class="ms-dropdown__box">
+                                <button class="ms-dropdown__box__icon dropdown-icon-modified">
+                                    <div class="sprite-bigarrdown"></div>
+                                </button>
+                                <input class="ms-dropdown__box__text dropdown-text-modified" type="text" placeholder="10" readonly>
+                                <div class="ms-dropdown__list dropdown-list-modified">
+                                    <div class="ms-dropdown__list__container">
+                                        <div class="ms-dropdown__list__value">10</div>
+                                        <div class="ms-dropdown__list__value">20</div>
+                                        <div class="ms-dropdown__list__value">30</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ms-table-footer__right__range mg-left16">
+                        <b>1 - 4</b> <span style="color: #666666;">bản ghi</span>
+                    </div>
+                    <div class="sprite-bigarrleft mg-left16"></div>
+                    <div class="sprite-bigarrright mg-left16"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1><b>Checkbox</b></h1>
+    <div class="group">
+        <div class="ms-checkbox-wrapper">
+            <label class="ms-checkbox">
+                <input type="checkbox" checked="checked">
+                <span class="cb-checkmark"></span>
+            </label>
+        </div>
+        
+        <label class="ms-checkbox">Two
+          <input type="checkbox">
+          <span class="cb-checkmark"></span>
+        </label>
+    </div>
+
+    <h1><b>RadioButton</b></h1>
+    <div class="group">
+        <label class="ms-radiobutton">One
+          <input type="radio" checked="checked" name="radio">
+          <span class="rdb-checkmark"></span>
+        </label>
+        <label class="ms-radiobutton">Two
+          <input type="radio" name="radio">
+          <span class="rdb-checkmark"></span>
+        </label>
+    </div>
+    <script>
+        document.getElementById("pop-up-dialog").addEventListener("click",function(){
+            document.querySelector(".ms-dialog").style.display = "block";
+        });
+
+        document.querySelector(".ms-dialog-wrapper__header__exit").addEventListener("click",function(){
+            document.querySelector(".ms-dialog").style.display = "none";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+/* Table */
+/* 
+Dạng văn bản căn bên trái (vd: Tên, CCCD)
+Số không thay đổi số lượng ký tự căn bên giữa (vd: Ngày, Số điện thoại, Sửa)
+Số thay đổi số lượng ký tự căn bên phải (vd: Số lượng, Phần trăm)
+Bảng dạng Horizontal Line và Free Form thì tiêu đề căn chỉnh theo cột dữ liệu. Còn bảng dạng Grid thì căn giữa.
+ */
+
+.pd-left16{
+    padding-left: 16px;
+} 
+
+.pd-right16{
+    padding-right: 16px;
+}
+
+.mg-left16{
+    margin-left: 16px;
+}
+
+.align-center{
+    text-align: center;
+}
+
+.align-right{
+    text-align: right;
+}
+
+.align-left{
+    text-align: left;
+}
+
+.cm-checkbox{
+    height: 20px;
+    width: 20px;
+    padding: 8px;
+}
+
+.width40{
+    width: 40px;
+}
+
+.dropdown-text-modified{
+    border: none;
+    padding-left: 4px;
+}
+
+.dropdown-text-modified::placeholder{
+    font-size: 14px;
+    color: #1F1F1F;
+}
+
+.dropdown-list-modified{
+    width: 76px;
+    bottom: 100%;
+    top: unset;
+    right: 0%;
+}
+
+.dropdown-list-funtion-modified{
+    right: 0%;
+}
+
+.dropdown-icon-modified{
+    right: 0%;
+}
+
+.ms-table-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 60px);
+    /* justify-content: space-between; */
+    /* border: 1px solid #E0E0E0; */
+    outline: 1px solid #E0E0E0;
+    border-radius: 4px;
+}
+
+.ms-table-container{
+    height: calc(100% - 48px);
+    width: 100%;
+    overflow: auto;
+}
+
+.ms-table{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+thead{
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    height: 48px;
+    background-color: #EEEEEE;
+}
+
+.ms-table__body{
+    height: auto;
+}
+
+.ms-table-footer{
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background-color: #EEEEEE;
+}
+
+.ms-table-footer__right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ms-table-footer__right__limit{
+    display: flex;
+    align-items: center;
+}
+
+.ms-table__row{
+    height: 48px;
+    border-bottom: 1px solid #E0E0E0;
+    cursor: pointer;
+}
+
+.ms-table__row__first{
+    height: 48px;
+    border-bottom: 1px solid #E0E0E0;
+    cursor: pointer;
+}
+
+.ms-table__row:hover{
+    background-color: #F2F2F2;
+}
+
+/* .col-function{
+    color: rgb(42, 42, 223);
+} */
+
+.width70{
+    width: 70px;
+}
+
+.width150{
+    width: 150px;
+}
+
+.blue::placeholder{
+    color: rgb(42, 42, 230);
+    font-size: 14px;
+}
+
+td, th{
+    white-space: nowrap;
+} 

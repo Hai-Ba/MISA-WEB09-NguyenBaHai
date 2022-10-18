@@ -1,0 +1,142 @@
+.form-size{
+    width: calc(100vw - 640px);
+    height: calc(100vh - 40px);
+}
+
+.form-header__left{
+    display: flex;
+    align-items: center;
+}
+
+.form-size__header{
+    max-height: 32px;
+    position: relative;
+}
+
+.form-header__right{
+    display: flex;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+}
+
+/* FORM BODY */
+.form-body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-body__top{
+    /* background-color: red; */
+    height: 50%;
+    display: flex;
+}
+
+.form-body__top__left{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* background-color: yellow; */
+}
+
+.ma-ten{
+    display: flex;
+}
+
+.ma{
+    width: 40%;
+}
+
+.ten{
+    flex: 1;
+}
+
+.donvi > .ms-dropdown{
+    width: inherit;
+}
+
+.chucdanh > .ms-textbox__input{
+    width: 100%;
+}
+
+
+.form-body__top__right{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* background-color: green; */
+}
+
+.ngaysinh-gioitinh, .socmt-ngaycap{
+    display: flex;
+}
+
+.ngaysinh {
+    width: 40%;
+}
+
+.gioitinh {
+    width: 50%;;
+}
+
+.gioitinh-wrapper{
+    display: flex;
+    flex-direction: column;
+    /* width: 200px; */
+    width: 100%;
+}
+
+.gioitinh-wrapper__lable{
+    color: #1F1F1F;
+    font-weight: bold;
+    height: 18px;
+    margin-bottom: 8px;
+}
+
+.gioitinh-wrapper__button{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 36px;
+    width: 100%;
+}
+
+.socmt{
+    width: 60%;
+}
+
+.ngaycap{
+    flex: 1;
+}
+
+.noicap{
+    width: 100%;
+}
+
+.form-body__bottom{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.diachi{
+    width: 100%;
+}
+
+.dt-email, .tk-nganhang{
+    display: flex;
+}
+
+.form-footer{
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid #E6E6E6;
+}
+
+.form-footer__right{
+    display: flex;
+}

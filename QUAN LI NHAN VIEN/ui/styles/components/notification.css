@@ -1,0 +1,110 @@
+.ms-notification{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    box-shadow: 0px 3px 20px rgba(0,0,0,0.078);
+}
+
+.ms-notification__close{
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1176px -360px;
+	width: 16px;
+	height: 16px;
+    cursor: pointer;
+}
+
+/* Notification Success */
+.ms-notification-success{
+    padding: 16px;
+    height: 56px;
+}
+
+.ms-notification-success__icon{
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1602px -258px;
+	width: 20px;
+	height: 20px;
+}
+
+.ms-notification-success__title{
+    color: #50B83C;
+}
+
+.ms-notification-success__body{
+    color: #1F1F1F;
+    margin-right: 100px;
+    margin-left: 10px;
+}
+
+/* Notification Error */
+.ms-notification-error{
+    height: 74px;
+    padding:20px 16px 20px 17.5px;
+}
+
+.ms-notification-error__icon{
+    display: flex;
+    align-items: flex-start;
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -762px -146px;
+	width: 20px;
+	height: 36px;
+}
+
+.ms-notification-error__title{
+    color: #DE3618;
+}
+
+.ms-notification-error__body{
+    display: flex;
+    flex-direction: column;
+    color: #1F1F1F;
+    margin-right: 50px;
+    margin-left: 10px;
+}
+
+.error-guide{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Notification Warning */
+.ms-notification-warning{
+    padding: 16px;
+    height: 56px;
+}
+
+.ms-notification-warning__icon{
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -816px -145px;
+	width: 24px;
+	height: 24px;
+}
+
+.ms-notification-warning__title{
+    color: #F49342;
+}
+
+.ms-notification-warning__body{
+    color: #1F1F1F;
+    margin-right: 100px;
+    margin-left: 10px;
+}
+
+/* Notification Inform */
+.ms-notification-inform{
+    padding: 16px;
+    height: 56px;
+}
+
+.ms-notification-inform__icon{
+    background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -480px -144px;
+	width: 24px;
+	height: 24px;
+}
+
+.ms-notification-inform__title{
+    color: #5055dd;
+}
+
+.ms-notification-inform__body{
+    color: #1F1F1F;
+    margin-right: 100px;
+    margin-left: 10px;
+}

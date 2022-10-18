@@ -1,0 +1,127 @@
+.ms-dropdown{
+    display: flex;
+    flex-direction: column;
+    /* width: 200px; */
+    width: 100%;
+}
+
+.ms-dropdown__lable{
+    color: #1F1F1F;
+    font-weight: bold;
+    height: 18px;
+    margin-bottom: 8px;
+}
+
+.ms-dropdown__box{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+}
+
+.ms-dropdown__box__text:hover{
+    background-color: #f6f6f6;
+}
+
+.ms-dropdown__box__text{
+    height: 36px;
+    width: 100%;
+    padding-left: 12px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #E6E6E6;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.ms-dropdown__box__text:focus{
+    border-color: #50B83C;
+}
+
+.ms-dropdown__box__icon{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    z-index: 0;
+    border: none;
+    right: calc(0% + 8px);
+    background-color: transparent;
+    /* background: url('../../assets/img/Sprites.64af8f61.svg') no-repeat -1128px -361px;
+	width: 16px;
+	height: 16px; */
+    cursor: pointer;
+}
+
+.ms-dropdown__box__icon div:hover{
+    background-color: #f6f6f6;
+}
+
+.ms-dropdown__box__icon:hover + .ms-dropdown__box__text{
+    background-color: #f6f6f6;
+}
+
+.ms-dropdown__box__icon:focus + .ms-dropdown__box__text{
+    border-color: #50B83C;
+}
+
+.ms-dropdown__box__icon:focus ~ .ms-dropdown__list{
+    display: block;
+}
+
+
+.ms-dropdown__list{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+    width: 100%;
+    padding: 8px;
+    overflow-y: auto;
+    border-radius: 4px;
+    background-color: #FFF;
+    box-shadow: 0px 4px 16px rgba(23,27,42,0.24);
+}
+
+.ms-dropdown__list__container{
+    overflow-y: scroll;
+    border-radius: 4px;
+    width: 100%;
+    max-height: 200px;
+}
+
+.ms-dropdown__list__value{
+    display: flex;
+    align-items: center;
+    height: 36px;
+    border-radius: 8px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+.ms-dropdown__list__value:hover{
+    background-color: rgba(80,184,60,0.1);
+}
+
+.ms-dropdown__box__text:focus + .ms-dropdown__list{
+    display: block;
+}
+
+::placeholder{
+    font-size: 14px;
+    color: #9E9E9E;
+}
+
+/* CSS Error Message */
+.ms-dropdown__message{
+    display: none;
+    color: #E81E1E;
+    font-size: 10px;
+}
+
+.ms-dropdown__box__error{
+    border-color: #E81E1E;
+}
+
