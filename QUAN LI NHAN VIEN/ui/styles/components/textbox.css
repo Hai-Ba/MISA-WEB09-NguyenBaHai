@@ -1,5 +1,6 @@
 .ms-textbox{
     display: block;
+    position: relative;
 }
 
 .ms-textbox__field{
@@ -30,11 +31,17 @@
 }
 
 .ms-textbox__warning{
-    display: none;
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 58px;
     margin-top: 8px;
     font-size: 12px;
     font-weight: 400;
     color: #E61D1D;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .ms-input-missing{

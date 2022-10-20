@@ -68,14 +68,14 @@
 }
 
 .sprite-bigarrleft{
-    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -28px -356px;
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -28px -404px;
 	width: 24px;
 	height: 24px;
     cursor: pointer;
 }
 
 .sprite-bigarrright{
-    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -1077px -356px;
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -76px -404px;
 	width: 24px;
 	height: 24px;
     cursor: pointer;
@@ -114,3 +114,218 @@
 	width: 24px;
 	height: 24px;
 }
+
+/* ******************************************************** */
+/* ******************************************************** */
+/* Sprite for sidebar */
+.sprite-tongquan{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -30px -1628px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-tienmat{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -73px -1628px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-tiengui{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -117px -1629px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-muahang{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -161px -1629px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-banhang{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -204px -1628px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-qlhoadon{
+    background: url('../assets/img/Sprites.64af8f61.svg')
+    no-repeat -249px -1628px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-kho{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -291px -1628px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-congcu{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -336px -1629px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-taisan{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -378px -1629px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-thue{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -423px -1630px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-giathanh{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -467px -1629px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-tonghop{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -510px -1629px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-ngansach{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -378px -1660px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-baocao{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -547px -1631px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+.sprite-phantich{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -203px -1662px;
+	width: 24px;
+	height: 24px;
+    display: block;
+}
+
+/* ******************************************************** */
+/* ******************************************************** */
+/* Sprite for sidebar focus */
+
+.spritefc-tongquan{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -30px -1585px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-tienmat{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -73px -1585px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-tiengui{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -117px -1586px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-muahang{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -161px -1586px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-banhang{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -204px -1585px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-qlhoadon{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -249px -1585px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-kho{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -291px -1585px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-congcu{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -336px -1586px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-taisan{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -378px -1586px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-thue{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -423px -1587px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-giathanh{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -467px -1586px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-tonghop{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -510px -1586px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-ngansach{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -423px -1660px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-baocao{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -547px -1588px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+.spritefc-phantich{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -247px -1662px;
+	width: 24px;
+	height: 24px;
+    display: none;
+}
+
+/* FOCUS On Side BAr */
+
+/* .tongquan:focus .sprite-tongquan{
+    display: none;
+}
+
+.tongquan:focus .spritefc-tongquan{
+    display: block;
+} */
+

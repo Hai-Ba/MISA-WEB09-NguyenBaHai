@@ -13,18 +13,18 @@
 <body>
     <!-- POP UP DIALOG -->
     <div class="ms-dialog">
-        <div class="ms-dialog-wrapper form-size">
+        <form class="ms-dialog-wrapper form-size">
             <div class="ms-dialog-wrapper__header form-size__header">
                 <div class="form-header__left">
                     <div class="ms-dialog-wrapper__header__title mg-right8">Thông tin nhân viên</div>
                     <div class="form-header__left__checkbox mg-right20 mg-left10">
-                        <label class="ms-checkbox mg-top8">Là khách hàng
+                        <label class="ms-checkbox mg-bottom2">Là khách hàng
                           <input type="checkbox">
                           <span class="cb-checkmark"></span>
                         </label>
                     </div>
                     <div class="form-header__left__checkbox mg-left10">
-                        <label class="ms-checkbox mg-top8">Là nhà cung cấp
+                        <label class="ms-checkbox mg-bottom2">Là nhà cung cấp
                           <input type="checkbox">
                           <span class="cb-checkmark"></span>
                         </label>
@@ -44,7 +44,7 @@
                                 <div class="ms-textbox">
                                     <div class="ms-textbox__field">Mã<span style="color: red;"> *</span></div>
                                     <input id="tab-focus" type="text" class="ms-textbox__input" placeholder="VD:NV-11111" tabindex="0">
-                                    <div class="ms-textbox__warning">Tên trường không được để trống</div>
+                                    <div class="ms-textbox__warning" title="Tên trường không được để trống">Tên trường không được để trống</div>
                                 </div>
                             </div>
                             <div class="ten">
@@ -211,7 +211,7 @@
                     <div class="ms-button">Cất và Thêm</div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
     <!-- PAGE WRAPPER -->
@@ -245,70 +245,86 @@
             <!-- SIDEBAR -->
             <div class="sidebar">
                 <div class="item-list">
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Tổng quan</div>
+                    <button class="item-list__item sidebar-focus" title="Tổng quan">
+                        <div class="sprite-tongquan item-nofocus"></div>
+                        <div class="spritefc-tongquan item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Tổng quan</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Tiền mặt</div>
+                    <button class="item-list__item sidebar-focus" title="Tiền mặt">
+                        <div class="sprite-tienmat item-nofocus"></div>
+                        <div class="spritefc-tienmat item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Tiền mặt</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Tiền gửi</div>
+                    <button class="item-list__item sidebar-focus" title="Tiền gửi">
+                        <div class="sprite-tiengui item-nofocus"></div>
+                        <div class="spritefc-tiengui item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Tiền gửi</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Mua hàng</div>
+                    <button class="item-list__item sidebar-focus" title="Mua hàng">
+                        <div class="sprite-muahang item-nofocus"></div>
+                        <div class="spritefc-muahang item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Mua hàng</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Bán hàng</div>
+                    <button class="item-list__item sidebar-focus" title="Bán hàng">
+                        <div class="sprite-banhang item-nofocus"></div>
+                        <div class="spritefc-banhang item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Bán hàng</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Quản lí hóa đơn</div>
+                    <button class="item-list__item sidebar-focus" title="Quản lí hóa đơn">
+                        <div class="sprite-qlhoadon item-nofocus"></div>
+                        <div class="spritefc-qlhoadon item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Quản lí hóa đơn</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Kho</div>
+                    <button class="item-list__item sidebar-focus" title="Kho">
+                        <div class="sprite-kho item-nofocus"></div>
+                        <div class="spritefc-kho item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Kho</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Công cụ dụng cụ</div>
+                    <button class="item-list__item sidebar-focus" title="Công cụ dụng cụ">
+                        <div class="sprite-congcu item-nofocus"></div>
+                        <div class="spritefc-congcu item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Công cụ dụng cụ</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Tài sản cố định</div>
+                    <button class="item-list__item sidebar-focus" title="Tài sản cố định">
+                        <div class="sprite-taisan item-nofocus"></div>
+                        <div class="spritefc-taisan item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Tài sản cố định</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Thuế</div>
+                    <button class="item-list__item sidebar-focus" title="Thuế">
+                        <div class="sprite-thue item-nofocus"></div>
+                        <div class="spritefc-thue item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Thuế</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Giá thành</div>
+                    <button class="item-list__item sidebar-focus" title="Giá thành">
+                        <div class="sprite-giathanh item-nofocus"></div>
+                        <div class="spritefc-giathanh item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Giá thành</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Tổng hợp</div>
+                    <button class="item-list__item sidebar-focus" title="Tổng hợp">
+                        <div class="sprite-tonghop item-nofocus"></div>
+                        <div class="spritefc-tonghop item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Tổng hợp</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Ngân sách</div>
+                    <button class="item-list__item sidebar-focus" title="Ngân sách">
+                        <div class="sprite-ngansach item-nofocus"></div>
+                        <div class="spritefc-ngansach item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Ngân sách</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Báo cáo</div>
+                    <button class="item-list__item sidebar-focus" title="Báo cáo">
+                        <div class="sprite-baocao item-nofocus"></div>
+                        <div class="spritefc-baocao item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Báo cáo</div>
                     </button>
-                    <button class="item-list__item">
-                        <div class="sprite-home mg-right12"></div>
-                        <div class="item-list__item__text">Phân tích tài chính</div>
+                    <button class="item-list__item sidebar-focus" title="Phân tích tài chính">
+                        <div class="sprite-phantich item-nofocus"></div>
+                        <div class="spritefc-phantich item-focus"></div>
+                        <div class="item-list__item__text mg-left12">Phân tích tài chính</div>
                     </button>
                 </div>
-                <div class="sidebar__decrease">
-                    <div class="sprite-bigarrleft mg-right12"></div>
-                    <div class="sidebar__decrease__text">Thu gọn</div>
+                <div class="sidebar__decrease" id="sidebar-minimal" Action="maximal">
+                    <div class="sprite-bigarrleft" id="minimal-sidebar"></div>
+                    <div class="sprite-bigarrright" id="maximal-sidebar" style="display: none;"></div>
+                    <div class="item-list__item__text mg-left12">Thu gọn</div>
                 </div>
             </div>
             <!-- BODY -->
@@ -341,10 +357,10 @@
                                 <table class="ms-table table-height">
                                     <thead class="ms-table__header">
                                         <tr class="ms-table__row__first">
-                                            <th class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <th class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox">
-                                                        <input type="checkbox" class="row-check" id="main-check">
+                                                        <input type="checkbox" id="main-check">
                                                         <span class="cb-checkmark"></span>
                                                     </label>
                                                 </div>
@@ -364,8 +380,8 @@
                                     </thead>
                                     <tbody class="ms-table__body">
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -383,7 +399,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-center col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -401,8 +417,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -420,7 +436,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-center col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -438,8 +454,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -457,7 +473,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-center col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -475,8 +491,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -494,7 +510,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-right col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -512,8 +528,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -531,7 +547,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-right col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -549,8 +565,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -568,7 +584,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-right col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -586,8 +602,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -605,7 +621,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-right col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -623,8 +639,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -642,7 +658,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-right col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -660,8 +676,8 @@
                                             </td>
                                         </tr>
                                         <tr class="ms-table__row">
-                                            <td class="ms-table__col ms-table__col1 pd-left16 pd-right16 ">
-                                                <div class="ms-checkbox-wrapper mg-bottom18">
+                                            <td class="ms-table__col ms-table__col1 stick-left pd-left16 pd-right16 ">
+                                                <div class="ms-checkbox-wrapper mg-bottom22">
                                                     <label class="ms-checkbox ">
                                                         <input type="checkbox" class="row-check ">
                                                         <span class="cb-checkmark check-mark-bg"></span>
@@ -679,7 +695,7 @@
                                             <td class="ms-table__col ms-table__col10 pd-left16 pd-right16 align-left">ViettinBanh</td>
                                             <td class="ms-table__col ms-table__col11 pd-left16 pd-right16 align-left">Hà Nội</td>
                                             <td class="ms-table__col ms-table__col12 pd-left16 pd-right16 align-right col-function">
-                                                <div class="ms-dropdown width70">
+                                                <div class="ms-dropdown">
                                                     <div class="ms-dropdown__box">
                                                         <button class="ms-dropdown__box__icon">
                                                             <div class="sprite-bluearrdown"></div>
@@ -737,41 +753,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.getElementById("pop-up-dialog").addEventListener("click",function(){
-            document.querySelector(".ms-dialog").style.display = "block";
-        });
-
-        document.querySelector(".ms-dialog-wrapper__header__exit").addEventListener("click",function(){
-            document.querySelector(".ms-dialog").style.display = "none";
-        });
-
-        document.querySelector(".ms-dialog-wrapper").addEventListener("click", function(){
-            document.getElementById("tab-focus").focus();
-        });
-
-        const mainCheckBox = document.getElementById("main-check");
-        const allCheckMask = document.querySelectorAll(".cb-checkmark");
-        mainCheckBox.addEventListener("change",function(){
-            // alert(mainCheckBox.getAttribute("checked"));
-            const allRowCheckBox = document.querySelectorAll(".row-check");
-            console.log(allCheckMask);
-            if(mainCheckBox.getAttribute("checked")){
-                for (const x of allRowCheckBox) {
-                    // console.log(x);
-                    if(x.getAttribute("checked")){
-                        x.removeAttribute("checked");
-                    }
-                }
-            } else{
-                for (const x of allRowCheckBox) {
-                    // console.log(x);
-                    if(!x.getAttribute("checked")){
-                        x.setAttribute("checked","checked");
-                    }
-                }
-            }
-        });
-    </script>
+    <script src="../js/index.js"></script>
 </body>
 </html>

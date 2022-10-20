@@ -1,5 +1,6 @@
 .ms-dropdown{
     display: flex;
+    position: relative;
     flex-direction: column;
     /* width: 200px; */
     width: 100%;
@@ -116,9 +117,14 @@
 
 /* CSS Error Message */
 .ms-dropdown__message{
-    display: none;
+    display: block;
+    position: absolute;
+    top: 65px;
     color: #E81E1E;
-    font-size: 10px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .ms-dropdown__box__error{
