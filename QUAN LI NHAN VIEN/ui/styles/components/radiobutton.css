@@ -26,9 +26,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 24px;
-    width: 24px;
-    background-color: #eee;
+    height: 20px;
+    width: 20px;
+    border: 1px solid #eee;
+    /* background-color: #eee; */
     border-radius: 50%;
   }
   
@@ -57,10 +58,10 @@
   
   /* Style the indicator (dot/circle) */
   .ms-radiobutton .rdb-checkmark:after {
-    top: 3px;
-    left: 3px;
-    width: 16px;
-    height: 16px;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #50B83C;
   }

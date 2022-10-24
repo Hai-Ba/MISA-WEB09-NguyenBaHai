@@ -74,6 +74,20 @@
     cursor: pointer;
 }
 
+.sprite-boldbigarrleft{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -28px -356px;
+	width: 24px;
+	height: 24px;
+    cursor: pointer;
+}
+
+.sprite-boldbigarrright{
+    background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -76px -356px;
+	width: 24px;
+	height: 24px;
+    cursor: pointer;
+}
+
 .sprite-bigarrright{
     background: url('../assets/img/Sprites.64af8f61.svg') no-repeat -76px -404px;
 	width: 24px;

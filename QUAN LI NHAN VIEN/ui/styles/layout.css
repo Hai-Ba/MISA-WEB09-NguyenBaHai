@@ -1,3 +1,18 @@
+/* IMPORT CSS COMPONENTS */
+@import url(../styles/components/button.css);
+@import url(../styles/components/buttonWithIcon.css);
+@import url(../styles/components/combobox.css);
+@import url(../styles/components/dialog.css);
+@import url(../styles/components/dropdown.css);
+@import url(../styles/components/notification.css);
+@import url(../styles/components/textbox.css);
+@import url(../styles/components/textboxWithIcon.css);
+@import url(../styles/components/table.css);
+@import url(../styles/components/checkbox.css);
+@import url(../styles/components/radiobutton.css);
+@import url(../styles/components/formInput.css);
+@import url(../styles/components/skeleton.css);
+
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -104,6 +119,7 @@
 
 .item-list__item{
     display: flex;
+    justify-content: flex-start;
     width: 100%;
     height: 44px;
     border-radius: 4px;
@@ -132,6 +148,10 @@
     background-color: hsla(220, 42%, 26%, 0.54);
 }
 
+.sidebar-focus:focus{
+    outline: none;
+}
+
 .sidebar-focus:focus .item-nofocus{
     display: none;
 }
@@ -145,6 +165,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
     display: block;
+    flex: 1;
+    text-align: left;
+    /* width: 100%;
+    text-align: left; */
 }
 
 .sidebar__decrease{
@@ -199,19 +223,98 @@
     color: #1F1F20;
 }
 
+/* CSS BODY TABLE */
 .content__table{
-    background-color: #FFFFFF;
     width: 100%;
     height: calc(100% - 52px);
+    /* height: auto; */
     border-radius: 4px;
 }
 
-.stick-left{
-    position: sticky;
-    top: 0;
+.dropdown-text-modified{
+    width: 50px;
 }
 
+.dropdown-text-modified:hover{
+    background-color: #ffffff00;
+}
+
+.dropdown-icon-modified{
+    right: calc(0% + 22px);
+    height: 50%;
+}
+
+.dropdown-icon-modified:hover{
+    border: 1px solid #869AB8
+}
+
+.dropdown__box__modified:hover{
+    background-color: #f6f6f600;
+}
+
+.dropdown-icon-modified:hover + .dropdown-text-modified{
+    background-color: #FFFFFF00;
+}
+
+.paging-text-modified{
+    width: 50px;
+    border: unset;
+}
+
+.paging-text-modified::placeholder{
+    font-size: 14px;
+    color: black;
+}
+
+.paging-icon-modified{
+    right: -14px;
+}
+
+/* SET WIDTH FOR COL */
+/* .width-checkbox{
+    width: 48px;
+} */
+
+.width-employeeID{
+    min-width: 120px;
+}
+
+.width-employeeName{
+    min-width: 200px;
+}
+
+.width-gender{
+    min-width: 110px;
+}
+
+.width-dob{
+    min-width: 120px;
+}
+.width-IDnumber{
+    min-width: 150px;
+}
+.width-position{
+    min-width: 200px;
+}
+.width-department{
+    min-width: 200px;
+}
+.width-bankAccount{
+    min-width: 150px;
+}
+.width-banhName{
+    min-width: 200px;
+}
+.width-bankAddress{
+    min-width: 250px;
+}
+.width-function{
+    min-width: 120px;
+}
+
+/* SET WIDTH FOR COL */
 .filter{
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -221,6 +324,42 @@
 }
 
 .blue::placeholder{
-    padding-left: 20px;
+    padding-left: 16px;
+    /* color: red; */
+}
+
+/* Funcion Dropdown list */
+.function-dropdown{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    /* top: 50%;
+    left: 50%; */
+    width: 150px;
+    padding: 8px;
+    overflow-y: auto;
+    border-radius: 4px;
+    background-color: #FFF;
+    box-shadow: 0px 4px 16px rgba(23,27,42,0.24);
+}
+
+.function-dropdown__container{
+    overflow-y: scroll;
+    border-radius: 4px;
+    width: 100%;
+    max-height: 200px;
+}
+
+.function-dropdown__value{
+    display: flex;
+    align-items: center;
+    height: 36px;
+    border-radius: 8px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+.function-dropdown__value:hover{
+    background-color: rgba(80,184,60,0.1);
 }
 

@@ -55,3 +55,35 @@
 ::placeholder{
     color: #9E9E9E;
 }
+
+/* Input DATE */
+.ms-input-date{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ms-input-date label{
+    color: #1F1F1F;
+    font-weight: bold;
+    height: 18px;
+    margin-bottom: 8px;
+}
+.ms-input-date-box{
+    height: 36px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    outline: none;
+    padding: 0 8px;
+}
+
+.ms-input-date-box:hover{
+    background-color: #F6F6F6;
+}
+
+.ms-input-date-box:focus{
+    border-color: #50B83C;
+}
+
+

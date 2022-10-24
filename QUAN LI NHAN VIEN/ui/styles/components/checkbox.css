@@ -1,37 +1,28 @@
-.ms-checkbox-wrapper{
+/* .ms-checkbox-wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  height: 24px;
+  width: 24px;
+} */
+
+/* Customize the label (the ms-checkbox) */
+.ms-checkbox {
   height: 24px;
   width: 24px;
 }
 
-/* Customize the label (the ms-checkbox) */
-.ms-checkbox {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    padding-left: 24px;
-    cursor: pointer;
-    font-size: 14px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
   /* Hide the browser's default checkbox */
-  .ms-checkbox input {
+  /* .ms-checkbox input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
-  }
+  } */
   
   /* Create a custom checkbox */
-  .cb-checkmark {
+  /* .cb-checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -41,46 +32,5 @@
     border-radius: 4px;
     border: 1px solid #000;
   }
+   */
   
-  /* On mouse-over, add a grey background color */
-  .ms-checkbox:hover input ~ .cb-checkmark {
-    background-color: #ccc;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .ms-checkbox input:checked ~ .cb-checkmark {
-    background-color: #50B83C;
-  }
-  
-  /* Create the cb-checkmark/indicator (hidden when not checked) */
-  .cb-checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  /* .check-mark-bg-green{
-    background-color: #50B83C !important;
-  }
-
-  .check-mark-bg-white{
-    background-color: #fff !important;
-  } */
-  
-  /* Show the cb-checkmark when checked */
-  .ms-checkbox input:checked ~ .cb-checkmark:after {
-    display: block;
-  }
-  
-  /* Style the cb-checkmark/indicator */
-  .ms-checkbox .cb-checkmark:after {
-    left: 4.5px;
-    top: 1px;
-    width: 5px;
-    height: 9px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }

@@ -1,6 +1,6 @@
 .form-size{
-    width: calc(100vw - 640px);
-    height: calc(100vh - 40px);
+    width: calc(100vw - 1000px);
+    height: calc(100vh - 200px);
 }
 
 .form-header__left{

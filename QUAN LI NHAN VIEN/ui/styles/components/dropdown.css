@@ -45,7 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding: 0px 5px;
     z-index: 0;
     border: none;
     right: calc(0% + 8px);
@@ -68,15 +68,10 @@
     border-color: #50B83C;
 }
 
-.ms-dropdown__box__icon:focus ~ .ms-dropdown__list{
-    display: block;
-}
-
-
 .ms-dropdown__list{
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     top: 100%;
     width: 100%;
     padding: 8px;
@@ -104,10 +99,6 @@
 
 .ms-dropdown__list__value:hover{
     background-color: rgba(80,184,60,0.1);
-}
-
-.ms-dropdown__box__text:focus + .ms-dropdown__list{
-    display: block;
 }
 
 ::placeholder{
