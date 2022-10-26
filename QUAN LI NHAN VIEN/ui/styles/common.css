@@ -50,12 +50,15 @@ a{
 ::-webkit-scrollbar-track {
     background: linear-gradient(171deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
     margin-top: 48px;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #9E9E9E;
     border-radius: 8px;
     background-clip: padding-box;
+    cursor: pointer;
+
 }
 
 /* Page common */

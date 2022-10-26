@@ -1,40 +1,30 @@
-
-import { dropdownEvent } from "./common/dropdown.js"; //Add event for dropdown
-import { formatDate, formatGender, formatMoney } from "./common/format.js";
-
-
-// import {formatDate, formatGender, formatMoney} from "format"
-class EmployeePage{
-    constructor() {
-        let me = this;
-        $( window ).on( "load", me.initEvent)
-        me.fetchData();
+class Base{
+    constructor(){
+        this.initEvent();
+        this.fetchData();
     }
-    /**
-     * 21/10/2022
-     * Nguyen Ba Hai
-     * Function to initiate the event(click, minimize,....)
-     * Using Jquery
-     */
+
     initEvent(){
-        let me = this;
-        //Dialog add employee pop-up, focus
-        popUpForm();
-        //Event close form popup
-        closeForm();
-        //Sidebar Minimization
         sidebarMinimized();
+        popUpFormAdd();
+        closeForm();
     }
-    fetchData(){
-        let me = this;
-        //fetch API here
-        $.get(api, function(data, status){
-            pagingFunction(data.length, data, table);
-            // dropdownEvent();
-        });
+
+    async fetchData(){
+        if(window.navigator.onLine){
+            try {
+                //Get all data
+                let data = await apiGetAllData();
+                pagingFunction(data);
+            } catch (error) {
+                displayErrorNotification("Không thể cập nhật được dữ liệu. Vui lòng kiểm tra lại kết nối internet.");
+            }
+        }
+        else{
+            displayErrorNotification("Không thể cập nhật được dữ liệu. Vui lòng kiểm tra lại kết nối internet.");
+        }
     }
 }
-
 
 /**
  * FUNCTION TO MINIMIZE SIDEBAR
@@ -42,7 +32,7 @@ class EmployeePage{
  * 22/10/2022
  * Nguyen Ba Hai
  */
-function sidebarMinimized(){
+ function sidebarMinimized(){
     let sidebarMinimal = $("#sidebar-minimal");
     let sidebarText = $(".item-list__item__text");
     sidebarMinimal.click(function(){
@@ -76,11 +66,28 @@ function sidebarMinimized(){
  * 22/10/2022
  * Nguyen Ba Hai
  */
-function popUpForm(){
+ function popUpFormAdd(){
+    $("#pop-up-dialog").unbind('click');
     $("#pop-up-dialog").click(function(){
+        $("#form-title").text("Thêm thông tin");
         $(".ms-dialog").css("display", "block");
         $("#tab-focus").focus();
+        //Ham validate tu them cho tung Trang
+        dropdownEvent();
     });
+}
+
+/**
+ * FUNCTION TO OPEN THE FORM FIX AND FOCUS
+ * Use in Duplicate function
+ * 24/10/2022
+ * Nguyen Ba Hai
+ */
+ function popUpFormDuplicate(){
+    $("#form-title").text("Nhân bản thông tin");
+    $(".ms-dialog").css("display", "block");
+    $("#tab-focus").focus();
+    //Ham validate tu them cho tung Trang
     dropdownEvent();
 }
 
@@ -90,12 +97,25 @@ function popUpForm(){
  * 22/10/2022
  * Nguyen Ba Hai
  */
-function closeForm(){
+ function closeForm(){
     $(".ms-dialog-wrapper__header__exit").click(function(){
+        //clear thoong tin form
+        $(".ms-dialog-wrapper")[0].reset();
         $(".ms-dialog").css("display", "none");
+        fixedDropDownEvent();
+    });
+    $("#ms-close-form").click(function(){
+        //clear thong tin tren form
+        $(".ms-dialog-wrapper")[0].reset();
+        $(".ms-dialog").css("display", "none");
+        fixedDropDownEvent();
+    });
+    $("#ms-save-form").click(function(){
+        //khong clear thong tin
+        $(".ms-dialog").css("display", "none");
+        fixedDropDownEvent();
     });
 }
-
 
 /**
  * DRAW TABLE:FUNCTION TO GENERATE THE CHECKBOX
@@ -157,6 +177,7 @@ function functionAppend(tdBody){
 function tableCheckBoxEvent(){
     let mainCheck = $("#main-check");
     let rowCheck = $(".row-check");
+    mainCheck.unbind('click');
     mainCheck.click(function(){
         if(mainCheck.is(':checked') == true){
             rowCheck.each(function(){
@@ -206,15 +227,28 @@ function tableCheckBoxEvent(){
 }
 
 /**
+ * FUNCTION CALL API DELETE BY ID
+ * Nguyen Ba Hai
+ * 23/11/2022
+ */
+async function deleteByID(id){
+    let data;
+    await apiDeleteById(id, 1);
+    data = await apiGetAllData();
+    pagingFunction(data);
+}
+
+/**
  * DRAWTABLE: FUNCTION ADD EVENT TO FIX DROPDOWN AT EACH TABLE
  * Calles in tableFunctionInitEvent()
  * 23/10/2022
  * Nguyen Ba Hai
  */
-function fixedDropDownEvent(allData){
+function fixedDropDownEvent(){
     let fixedDD = $("#dd-function-list");
     let idRow;
-    $(".dd-function-btn").each(function(){   
+    $(".dd-function-btn").each(function(){ 
+        $(this).unbind('click');  
         $(this).click(function(){
             idRow = $(this).parent().parent().parent().parent().attr("id");
             let top = $(this)[0].getBoundingClientRect().y + 20;
@@ -230,15 +264,18 @@ function fixedDropDownEvent(allData){
     });
     $("#duplicate").unbind('click');
     $("#duplicate").click(function(){
-        console.log($(this).text());
+        popUpFormDuplicate();
+        //FILL CHO EMPLOYEE
+        getFormFill(idRow);
+        //Goi API lay du lieu tu id
+        //Goi API xoa du lieu theo id
+        //
         fixedDD.hide();
     });
     $("#delete").unbind('click');
     $("#delete").click(function(){
-        console.log(idRow);
         //Goi API xoa du lieu
-        deleteByID(idRow,api, allData);
-        //Hien thong bao xoa thanh cog
+        deleteByID(idRow);
         fixedDD.hide();
     });
     $("#stop").unbind('click');
@@ -249,35 +286,13 @@ function fixedDropDownEvent(allData){
 }
 
 /**
- * FUNCTION CALL API DELETE BY ID
- * Nguyen Ba Hai
- * 23/11/2022
- */
-function deleteByID(id, api, allData){
-    $.ajax({
-        url: `${api}/${id}`,
-        type: "DELETE", // <- Change here
-        contentType: "application/json",
-        success: function() {
-            //Ve lai bang
-            let newArr = allData.filter(function(value, index, arr){
-                return value.EmployeeId !== id;
-            });
-            console.log(newArr);
-            pagingFunction(allData.length-1, newArr, table);
-        },
-        error: function() {
-        }
-    });
-}
-
-/**
  * FUNCTION PAGING TABLE
  * This function call the drawTable() each time the page table change
  * Nguyen Ba Hai
  * 23/10/2022
  */
-function pagingFunction(records, data, table){
+ function pagingFunction(data){
+    let records = data.length;
     //records: tong so ban ghi, data: day du lieu, table: id bang
     let numberRecordMax = $("#numberOfRecordInPage").val(); //Number of records in a page table, default is 10
     let eventCatch = $("#numberOfRecordInPage + div").find(".ms-dropdown__list__value");
@@ -292,37 +307,58 @@ function pagingFunction(records, data, table){
     console.log(`Number of records in page:  ${numberRecordMax}`);
     console.log(`Page number: ${pageNumber}`);
     //init table
-    let recordPerPage = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
+    let recordsDisplay = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
     $("tbody > tr").remove();
-    drawTable(recordPerPage,table,data);
-    $("#go-back").css("display","none");
-    $("#dis-go-back").css("display","block");
-    $("#dis-go-next").css("display","none");
-    $("#go-next").css("display","block");
-    recordFrom.text(`${offSet + 1} - ${offSet+recordPerPage.length}`);
-    offSet += recordPerPage.length;
+    drawTable(recordsDisplay);
+    if(records > numberRecordMax){
+        $("#go-back").css("display","none");
+        $("#dis-go-back").css("display","block");
+        $("#dis-go-next").css("display","none");
+        $("#go-next").css("display","block");
+    } else{
+        $("#go-back").css("display","none");
+        $("#dis-go-back").css("display","block");
+        $("#dis-go-next").css("display","block");
+        $("#go-next").css("display","none");
+    }
+    if(records == 0){
+        recordFrom.text("0");
+    }
+    else{
+        recordFrom.text(`${offSet + 1} - ${offSet+recordsDisplay.length}`);
+    }
+    // recordFrom.text(`${offSet + 1} - ${offSet+recordsDisplay.length}`);
+    offSet += recordsDisplay.length;
 
     //Find number of record max
     eventCatch.each(function(){//Event doi so luong ban ghi 1 trang
+        $(this).unbind('click');
         $(this).click(function(){
             $("tbody > tr").remove();//clear data table
             $("#numberOfRecordInPage").val($(this).text());
             $("#numberOfRecordInPage").parent().find(".ms-dropdown__list").css("display","none");//undisplay list
             offSet = 0;
-            $("#go-back").css("display","none");
-            $("#dis-go-back").css("display","block");
-            $("#dis-go-next").css("display","none");
-            $("#go-next").css("display","block");
             numberRecordMax = $(this).text();//change max record value
             pageNumber = 1;
             numberOfPage = records%numberRecordMax == 0?records/numberRecordMax:Math.floor(records/numberRecordMax) + 1;
             console.log(`Number of pages:  ${numberOfPage}`);
             console.log(`Number of records in page:  ${numberRecordMax}`);
             console.log(`Page number: ${pageNumber}`);
-            recordPerPage = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
-            drawTable(recordPerPage,table,data);
-            recordFrom.text(`${offSet + 1} - ${offSet+recordPerPage.length}`);
-            offSet += recordPerPage.length;
+            recordsDisplay = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
+            if(records > numberRecordMax){
+                $("#go-back").css("display","none");
+                $("#dis-go-back").css("display","block");
+                $("#dis-go-next").css("display","none");
+                $("#go-next").css("display","block");
+            } else{
+                $("#go-back").css("display","none");
+                $("#dis-go-back").css("display","block");
+                $("#dis-go-next").css("display","block");
+                $("#go-next").css("display","none");
+            }
+            drawTable(recordsDisplay);
+            recordFrom.text(`${offSet + 1} - ${offSet+recordsDisplay.length}`);
+            offSet += recordsDisplay.length;
         });
     });
     if(pageNumber >= 1 && pageNumber <= numberOfPage){//Bat su kien chuyen trang
@@ -333,15 +369,16 @@ function pagingFunction(records, data, table){
             $("#go-next").css("display","none");
         }
         else{
+            $("#go-next").unbind('click');
             $("#go-next").click(function(){
                 if(pageNumber < numberOfPage){
                     pageNumber++;
                     console.log(`Page number: ${pageNumber}`);
                     $("tbody > tr").remove();//clear data table
-                    recordPerPage = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
-                    drawTable(recordPerPage,table,data);
-                    recordFrom.text(`${offSet + 1} - ${offSet+recordPerPage.length}`);
-                    offSet += recordPerPage.length;
+                    recordsDisplay = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
+                    drawTable(recordsDisplay);
+                    recordFrom.text(`${offSet + 1} - ${offSet+recordsDisplay.length}`);
+                    offSet += recordsDisplay.length;
                     if(pageNumber > 1){
                         $("#go-back").css("display","block");
                         $("#dis-go-back").css("display","none");
@@ -352,16 +389,17 @@ function pagingFunction(records, data, table){
                     }
                 }
             });
+            $("#go-back").unbind('click');
             $("#go-back").click(function(){
                 if(pageNumber > 1){
                     offSet -= data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber).length;
                     pageNumber--;
                     console.log(`Page number: ${pageNumber}`);
                     $("tbody > tr").remove();//clear data table
-                    recordPerPage = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
-                    drawTable(recordPerPage,table,data);
-                    recordFrom.text(`${offSet - recordPerPage.length + 1} - ${offSet}`);
-                    // offSet -= recordPerPage.length;
+                    recordsDisplay = data.slice(numberRecordMax*pageNumber-numberRecordMax,numberRecordMax*pageNumber);
+                    drawTable(recordsDisplay);
+                    recordFrom.text(`${offSet - recordsDisplay.length + 1} - ${offSet}`);
+                    // offSet -= recordsDisplay.length;
                     if(pageNumber < numberOfPage){
                         $("#dis-go-next").css("display","none");
                         $("#go-next").css("display","block");
@@ -384,7 +422,7 @@ function pagingFunction(records, data, table){
  * Nguyen Ba Hai
  * 23/10/2022
  */
-function drawTable(dataSet,table,allData){
+function drawTable(dataSet){
     // console.log(dataSet);
     for (const data of dataSet) {
         let trBody = $("<tr></tr>");
@@ -424,7 +462,7 @@ function drawTable(dataSet,table,allData){
     }, function(){
         $(this).find("td").css("backgroundColor","#FFFFFF");
     });
-    tableFunctionInitEvent(allData);//Khoi tao su kien cho bang moi
+    tableFunctionInitEvent();//Khoi tao su kien cho bang moi
 }
 
 /**
@@ -432,13 +470,10 @@ function drawTable(dataSet,table,allData){
  * Nguyen Ba Hai
  * 23/10/2022
  */
-function tableFunctionInitEvent(allData){
+function tableFunctionInitEvent(){
     dropdownEvent();
-    fixedDropDownEvent(allData);
+    fixedDropDownEvent();
     tableCheckBoxEvent();
 }
-
-const table = $("#tableID");
-const api = table.attr("api");
-new EmployeePage();
-// console.log(totalRecords);
+// Construct Base Object
+new Base();

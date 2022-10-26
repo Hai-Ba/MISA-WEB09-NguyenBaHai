@@ -107,8 +107,8 @@
 }
 
 /* CSS Error Message */
-.ms-dropdown__message{
-    display: block;
+.ms-dropdown__message__missing{
+    display: none;
     position: absolute;
     top: 65px;
     color: #E81E1E;
@@ -118,7 +118,7 @@
     overflow: hidden;
 }
 
-.ms-dropdown__box__error{
+/* .ms-dropdown__box__error{
     border-color: #E81E1E;
-}
+} */
 

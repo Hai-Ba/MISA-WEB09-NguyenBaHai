@@ -18,7 +18,7 @@
         <form class="ms-dialog-wrapper form-size">
             <div class="ms-dialog-wrapper__header form-size__header">
                 <div class="form-header__left">
-                    <div class="ms-dialog-wrapper__header__title mg-right8">Thông tin nhân viên</div>
+                    <div class="ms-dialog-wrapper__header__title mg-right8"><span id="form-title" style="font-size: 24px;"></span> nhân viên</div>
                     <div class="form-header__left__checkbox mg-right20 mg-left10">
                         <label class="ms-checkbox mg-bottom2">Là khách hàng
                             <input checked type="checkbox">
@@ -46,16 +46,18 @@
                                 <div class="ms-textbox">
                                     <div class="ms-textbox__field">Mã<span style="color: red;"> *</span></div>
                                     <input id="tab-focus" type="text" class="ms-textbox__input"
-                                        placeholder="VD:NV-11111" tabindex="0">
-                                    <div class="ms-textbox__warning" title="Tên trường không được để trống">Tên trường
+                                        placeholder="VD:NV-11111" tabindex="0" Field="EmployeeCode">
+                                    <div class="ms-textbox__warning__missing" title="Tên trường không được để trống">Trường &lt Mã &gt
                                         không được để trống</div>
+                                    <div class="ms-textbox__warning__format" title="Mã chưa đúng định dạng(NV-XXXXX)">Trường &lt Mã &gt
+                                        chưa đúng định dạng(NV-XXXXX)</div>
                                 </div>
                             </div>
                             <div class="ten">
                                 <div class="ms-textbox">
                                     <div class="ms-textbox__field">Tên<span style="color: red;"> *</span></div>
-                                    <input type="text" class="ms-textbox__input" placeholder="VD:Nguyen Van A">
-                                    <div class="ms-textbox__warning">Tên trường không được để trống</div>
+                                    <input id="employee-name-field" type="text" class="ms-textbox__input" placeholder="VD:Nguyen Van A" Field="EmployeeName">
+                                    <div class="ms-textbox__warning__missing">Trường &lt Tên &gt không được để trống</div>
                                 </div>
                             </div>
                         </div>
@@ -67,22 +69,23 @@
                                     <button class="ms-dropdown__box__icon">
                                         <div class="sprite-bigarrdown"></div>
                                     </button>
-                                    <input class="ms-dropdown__box__text" type="text" placeholder="Nhân sự" readonly>
+                                    <input id="department-name-field" class="ms-dropdown__box__text" type="text" placeholder="Nhân sự" readonly name="department">
                                     <div class="ms-dropdown__list">
-                                        <div class="ms-dropdown__list__container">
-                                            <div class="ms-dropdown__list__value">Misa</div>
-                                            <div class="ms-dropdown__list__value">FPT</div>
-                                            <div class="ms-dropdown__list__value">Viettel</div>
+                                        <div class="ms-dropdown__list__container" id="department-mapping">
+                                            <div class="ms-dropdown__list__value" id="469b3ece-744a-45d5-957d-e8c757976496">Phòng sản xuất</div>
+                                            <div class="ms-dropdown__list__value" id="142cb08f-7c31-21fa-8e90-67245e8b283e">Phòng nhân sự</div>
+                                            <div class="ms-dropdown__list__value" id="4e272fc4-7875-78d6-7d32-6a1673ffca7c">Phòng đào tạo</div>
+                                            <div class="ms-dropdown__list__value" id="17120d02-6ab5-3e43-18cb-66948daf6128">Phòng tuyển sinh</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ms-dropdown__message">Error Message</div>
+                                <div class="ms-dropdown__message__missing">Trường &lt Đơn vị &gt không được để trống</div>
                             </div>
                         </div>
                         <div class="chucdanh mg-bottom22">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field">Chức danh</div>
-                                <input type="text" class="ms-textbox__input" placeholder="Lễ tân chính">
+                                <input type="text" class="ms-textbox__input" placeholder="Lễ tân chính" name="position">
                             </div>
                         </div>
                     </div>
@@ -90,38 +93,23 @@
                         <div class="ngaysinh-gioitinh mg-bottom22">
                             <div class="ms-input-date ngaysinh mg-right12">
                                 <label for="">Ngày sinh</label>
-                                <input type="date" name="" id="" class="ms-input-date-box">
+                                <input type="date" name="dob" id="" class="ms-input-date-box">
                             </div>
-                            <!-- <div class="ngaysinh mg-right12">
-                                <div class="ms-dropdown">
-                                    <label for="" class="ms-dropdown__lable">Ngày sinh</label>
-                                    <div class="ms-dropdown__box">
-                                        <button class="ms-dropdown__box__icon">
-                                            <div class="sprite-date"></div>
-                                        </button>
-                                        <input class="ms-dropdown__box__text" type="text" placeholder="12/12/2001" readonly>
-                                        <div class="ms-dropdown__list">
-                                            <div class="ms-dropdown__list__container">
-                                                <div class="ms-dropdown__list__value">12/12/2002</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                            
                             <div class="gioitinh">
                                 <div class="gioitinh-wrapper">
                                     <label for="" class="gioitinh-wrapper__lable">Giới tính</label>
                                     <div class="gioitinh-wrapper__button">
                                         <label class="ms-radiobutton">Nam
-                                            <input checked type="radio" name="radio">
+                                            <input checked type="radio" name="gender" value=0>
                                             <span class="rdb-checkmark"></span>
                                         </label>
                                         <label class="ms-radiobutton">Nữ
-                                            <input type="radio" name="radio">
+                                            <input type="radio" name="gender" value=1>
                                             <span class="rdb-checkmark"></span>
                                         </label>
                                         <label class="ms-radiobutton">Khác
-                                            <input type="radio" name="radio">
+                                            <input type="radio" name="gender" value=2>
                                             <span class="rdb-checkmark"></span>
                                         </label>
                                     </div>
@@ -132,34 +120,19 @@
                             <div class="socmt mg-right8">
                                 <div class="ms-textbox">
                                     <div class="ms-textbox__field" title="Số chứng minh nhân dân">Số CMND</div>
-                                    <input type="text" class="ms-textbox__input" placeholder="0123456789">
+                                    <input type="text" class="ms-textbox__input" placeholder="0123456789" name="idNumber">
                                 </div>
                             </div>
                             <div class="ms-input-date ngaycap">
-                                <label for="">Ngày sinh</label>
-                                <input type="date" name="" id="" class="ms-input-date-box">
+                                <label for="">Ngày cấp</label>
+                                <input type="date" name="idDate" id="" class="ms-input-date-box">
                             </div>
-                            <!-- <div class="ngaycap">
-                                <div class="ms-dropdown">
-                                    <label for="" class="ms-dropdown__lable">Ngày cấp</label>
-                                    <div class="ms-dropdown__box">
-                                        <button class="ms-dropdown__box__icon">
-                                            <div class="sprite-date"></div>
-                                        </button>
-                                        <input class="ms-dropdown__box__text" type="text" placeholder="12/12/2001" readonly>
-                                        <div class="ms-dropdown__list">
-                                            <div class="ms-dropdown__list__container">
-                                                <div class="ms-dropdown__list__value">12/12/2002</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                            
                         </div>
                         <div class="noicap mg-bottom22">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field">Nơi cấp</div>
-                                <input type="text" class="ms-textbox__input" placeholder="Hà Nội">
+                                <input type="text" class="ms-textbox__input" placeholder="Hà Nội" name="idPlace">
                             </div>
                         </div>
                     </div>
@@ -169,26 +142,26 @@
                     <div class="diachi mg-bottom22">
                         <div class="ms-textbox">
                             <div class="ms-textbox__field">Địa chỉ</div>
-                            <input type="text" class="ms-textbox__input" placeholder="Âu cơ , Hà Nội">
+                            <input type="text" class="ms-textbox__input" placeholder="Âu cơ , Hà Nội" name="address">
                         </div>
                     </div>
                     <div class="dt-email mg-bottom22">
                         <div class="didong mg-right8">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field" title="Điện thoại di động">ĐT di động</div>
-                                <input type="text" class="ms-textbox__input" placeholder="0367855590">
+                                <input type="text" name="phoneNumber" class="ms-textbox__input" placeholder="0367855590">
                             </div>
                         </div>
                         <div class="codinh mg-right8">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field" title="Điện thoại cố định">ĐT cố định</div>
-                                <input type="text" class="ms-textbox__input" placeholder="(764) 749-6478">
+                                <input type="text" class="ms-textbox__input" placeholder="(764) 749-6478" name="telephoneNumber">
                             </div>
                         </div>
                         <div class="email">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field">Email</div>
-                                <input type="text" class="ms-textbox__input" placeholder="abc@gmail.com">
+                                <input type="text" class="ms-textbox__input" placeholder="abc@gmail.com" name="email">
                             </div>
                         </div>
                     </div>
@@ -196,19 +169,19 @@
                         <div class="tk mg-right8">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field">Tài khoản ngân hàng</div>
-                                <input type="text" class="ms-textbox__input" placeholder="944197">
+                                <input type="text" class="ms-textbox__input" placeholder="944197" name="banhAccount">
                             </div>
                         </div>
                         <div class="nganhang mg-right8">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field">Tên ngân hàng</div>
-                                <input type="text" class="ms-textbox__input" placeholder="Viettel">
+                                <input type="text" class="ms-textbox__input" placeholder="Viettel" name="bankName">
                             </div>
                         </div>
                         <div class="chinhanh">
                             <div class="ms-textbox">
                                 <div class="ms-textbox__field">Chi nhánh</div>
-                                <input type="text" class="ms-textbox__input" placeholder="Hà Nội">
+                                <input type="text" class="ms-textbox__input" placeholder="Hà Nội" name="bankProvince">
                             </div>
                         </div>
                     </div>
@@ -217,11 +190,11 @@
 
             <div class="form-footer">
                 <div class="form-footer__left">
-                    <div class="ms-button-secondary">Hủy</div>
+                    <div class="ms-button-secondary" id="ms-close-form">Hủy</div>
                 </div>
                 <div class="form-footer__right">
-                    <div class="ms-button-secondary mg-right8">Cất</div>
-                    <div class="ms-button">Cất và Thêm</div>
+                    <div class="ms-button-secondary mg-right8" id="ms-save-form">Cất</div>
+                    <div class="ms-button" id="ms-add-employee">Cất và Thêm</div>
                 </div>
             </div>
         </form>
@@ -391,11 +364,11 @@
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
                                                 style="min-width: 200px;" tableTurple="DepartmentName">TÊN ĐƠN VỊ</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
-                                                style="min-width: 150px;" tableTurple="BankNumber">SỐ TÀI KHOẢN</th>
+                                                style="min-width: 150px;" tableTurple="BankAccountNumber">SỐ TÀI KHOẢN</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
                                                 style="min-width: 150px;" tableTurple="BankName">TÊN NGÂN HÀNG</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
-                                                title="Chi nhánh tài khoản ngân hàng" style="min-width: 250px;" tableTurple="BankAddress">CHI
+                                                title="Chi nhánh tài khoản ngân hàng" style="min-width: 250px;" tableTurple="BankProvinceName">CHI
                                                 NHÁNH TK NGÂN HÀNG</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-right"
                                                 style="min-width: 120px;" tableTurple="Function">CHỨC NĂNG</th>
@@ -446,6 +419,8 @@
             </div>
         </div>
     </div>
+
+    <!-- FIX DROPDOWN -->
     <div class="function-dropdown" id="dd-function-list">
         <div class="function-dropdown__container">
             <div class="function-dropdown__value" id="duplicate">Nhân bản</div>
@@ -454,11 +429,60 @@
             </div>
         </div>
     </div>
+    <!-- FIX MESSAGE POPUP -->
+    <div class="ms-notification ms-notification-success" style="
+        display: none;
+        position: fixed;
+        z-index: 20;
+        top: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+    ">
+        <div class="ms-notification-success__icon"></div>
+        <div class="ms-notification-success__body"> <b class="ms-notification-success__title">Thành công!</b> <span id="text-success">Nhân viên đã bị xóa.</span></div>
+        <div class="ms-notification__close"></div>
+    </div>
+
+    <div class="ms-notification ms-notification-error" style="
+        display: none;
+        position: fixed;
+        z-index: 20;
+        top: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+    ">
+        <div class="ms-notification-error__icon"></div>
+        <div class="ms-notification-error__body"> 
+            <div><b class="ms-notification-error__title">Lỗi!</b> <span id="text-error">Không thể cập nhật được dữ liệu. Vui lòng kiểm tra lại kết nối internet.</span></div>
+            <div class="error-guide">Xem hướng dẫn</div>
+        </div>
+        <div class="ms-notification__close"></div>
+    </div> 
+
+    <div class="ms-notification ms-notification-warning" style="
+        display: none;
+        position: fixed;
+        z-index: 20;
+        top: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+    ">
+        <div class="ms-notification-warning__icon"></div>
+        <div class="ms-notification-warning__body"> <b class="ms-notification-warning__title">Cảnh báo!</b> <span id="text-warning">Dữ liệu của bạn đã bị thay đổi bởi người dùng khác.</span></div>
+        <div class="ms-notification__close"></div>
+    </div>
+
     <!-- IMPORT JQUERY CDN -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <!-- <script type="module" src="../js/common/format.js"></script> -->
-    <script type="module" src="../js/employee.js"></script>
+    <!-- IMPORT JS COMPONENT -->
+    <script src="../js/common/apiService.js"></script>
+    <script src="../js/common/dropdown.js"></script>
+    <script src="../js/common/format.js"></script>
+    <script src="../js/common/notificationDiplay.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../js/employee/employee.js"></script>
+    <script src="../js/employee/employeeForm.js"></script>
     <!-- <script src="../js/common/dropdown.js"></script> -->
 </body>
 

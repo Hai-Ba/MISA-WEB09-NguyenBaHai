@@ -30,8 +30,22 @@
     color: #9E9E9E;
 }
 
-.ms-textbox__warning{
-    display: block;
+.ms-textbox__warning__missing{
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 58px;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #E61D1D;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ms-textbox__warning__format{
+    display: none;
     width: 100%;
     position: absolute;
     top: 58px;
