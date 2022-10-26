@@ -1,6 +1,8 @@
 .ms-dialog{
-    position: absolute;
-    z-index: 200;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15;
     display: none;
     /* min-width: 1366px; */
     /* min-height: 768px; */

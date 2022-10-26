@@ -157,11 +157,11 @@ async function apiPostData(data, type){
             //Popup ma nvien da ton tai
             if(e.status == 400){
                 if(api == apiEmployee){
-                    displayWarningNotification("Mã nhân viên đã tồn tại! Thêm thất bại");
+                    showWarningExist("Mã nhân viên đã tồn tại! Thêm thất bại");
                 }else if(api == apiDepartment){
-                    displayWarningNotification("Mã phòng ban đã tồn tại! Thêm thất bại");
+                    showWarningExist("Mã phòng ban đã tồn tại! Thêm thất bại");
                 } else if(apt == apiPosition){
-                    displayWarningNotification("Mã vị trí đã tồn tại! Thêm thất bại");
+                    showWarningExist("Mã vị trí đã tồn tại! Thêm thất bại");
                 }
             }
         }

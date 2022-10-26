@@ -1,8 +1,10 @@
 //FORMAT DATE THEO DINH DANG DD/MM/YYYY
-function formatDate(value){
+function formatDateDDMMYYYY(value){
     value = `${value.getDate()}/${value.getMonth() + 1}/${value.getFullYear()}`;
     return value;
 }
+
+// function dateToYYYYMMDD(x)
 
 //FORMAT GIOI TINH 0:NAM  , 1: NU,  2: KHAC
 function formatGender(value){

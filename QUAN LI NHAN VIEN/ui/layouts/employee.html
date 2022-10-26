@@ -20,16 +20,14 @@
                 <div class="form-header__left">
                     <div class="ms-dialog-wrapper__header__title mg-right8"><span id="form-title" style="font-size: 24px;"></span> nhân viên</div>
                     <div class="form-header__left__checkbox mg-right20 mg-left10">
-                        <label class="ms-checkbox mg-bottom2">Là khách hàng
-                            <input checked type="checkbox">
-                            <span class="cb-checkmark"></span>
-                        </label>
+                        <input type="checkbox" style="width: 18px; height: 18px; margin-right: 8px;" checked>
+                        <div class="" >Là khách hàng
+                        </div>
                     </div>
                     <div class="form-header__left__checkbox mg-left10">
-                        <label class="ms-checkbox mg-bottom2">Là nhà cung cấp
-                            <input type="checkbox">
-                            <span class="cb-checkmark"></span>
-                        </label>
+                        <input type="checkbox" style="width: 18px; height: 18px; margin-right: 8px;">
+                        <div class="">Là nhà cung cấp
+                        </div>
                     </div>
                 </div>
                 <div class="form-header__right">
@@ -211,11 +209,11 @@
                 <div class="sprite-bigarrdown"></div>
             </div>
             <div class="header-right">
-                <div class="header-right__icon">
+                <div class="header-right__icon" title="Trợ giúp">
                     <div class="sprite-help"></div>
                     <div class="header-right__icon__foot"></div>
                 </div>
-                <div class="header-right__icon">
+                <div class="header-right__icon" title="Thông báo">
                     <div class="sprite-bell"></div>
                     <div class="header-right__icon__foot"></div>
                 </div>
@@ -337,7 +335,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="sprite-refresh"></div>
+                            <div class="sprite-refresh" id="refresh-table-btn" title="Làm mới bảng"></div>
                         </div>
                         <!-- TABLE -->
                         <div class="ms-table-wrapper">
@@ -460,17 +458,67 @@
     </div> 
 
     <div class="ms-notification ms-notification-warning" style="
-        display: none;
-        position: fixed;
-        z-index: 20;
-        top: 65px;
-        left: 50%;
-        transform: translateX(-50%);
-    ">
+            display: none;
+            position: fixed;
+            z-index: 20;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+        ">
         <div class="ms-notification-warning__icon"></div>
         <div class="ms-notification-warning__body"> <b class="ms-notification-warning__title">Cảnh báo!</b> <span id="text-warning">Dữ liệu của bạn đã bị thay đổi bởi người dùng khác.</span></div>
         <div class="ms-notification__close"></div>
     </div>
+
+    <!-- 2 buttons Dialog popup -->
+    <div class="ms-warning-block" id="ask-delete-eployee">
+        <div class="ms-warning-block__top">
+            <div class="ms-warning-block__top__icon"></div>
+            <div class="ms-warning-block__top__text">Bạn có thực sự muốn xóa không?</div>
+        </div>
+        <div class="ms-warning-block__bottom">
+            <button class="ms-button-secondary close-form">Không</button>
+            <button class="ms-button close-form" id="aggree-delete">Có</button>
+        </div>
+    </div>
+
+    <!-- Single button Dialog popup  -->
+    <div class="ms-warning-block" id="employee-code-exist">
+        <div class="ms-warning-block__top">
+            <div class="ms-warning-block__top__icon"></div>
+            <div class="ms-warning-block__top__text"><span id="existance-code">Mã nhân viên xxx đã tồn tại trong hệ thống</span></div>
+        </div>
+        <div class="ms-warning-block__bottom" style="justify-content: flex-end;">
+            <button class="ms-button close-form">Đồng ý</button>
+        </div>
+    </div>
+
+    <!-- Single button error Dialog popup  -->
+    <div class="ms-error-block" id="must-fullfill">
+        <div class="ms-error-block__top">
+            <div class="ms-error-block__top__icon"></div>
+            <div class="ms-error-block__top__text" id="error-info-text">Tên không được để trống</div>
+        </div>
+        <div class="ms-error-block__bottom">
+            <button class="ms-button close-form">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Three buttons inform Dialog popup  -->
+    <div class="ms-inform-block" id="change-data">
+        <div class="ms-inform-block__top">
+            <div class="ms-inform-block__top__icon"></div>
+            <div class="ms-inform-block__top__text">Dữ liệu đã bị thay đổi. Bạn có muốn cất không?</div>
+        </div>
+        <div class="ms-inform-block__bottom">
+            <button class="ms-button-secondary close-form">Hủy</button>
+            <div style="display: flex;">
+                <button class="ms-button-secondary" style="margin-right: 8px;">Không</button>
+                <button class="ms-button">Có</button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- IMPORT JQUERY CDN -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -480,6 +528,7 @@
     <script src="../js/common/dropdown.js"></script>
     <script src="../js/common/format.js"></script>
     <script src="../js/common/notificationDiplay.js"></script>
+    <script src="../js/common/dialogPopup.js"></script>
     <script src="../js/base.js"></script>
     <script src="../js/employee/employee.js"></script>
     <script src="../js/employee/employeeForm.js"></script>

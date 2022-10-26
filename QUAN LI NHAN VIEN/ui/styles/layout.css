@@ -12,6 +12,7 @@
 @import url(../styles/components/radiobutton.css);
 @import url(../styles/components/formInput.css);
 @import url(../styles/components/skeleton.css);
+@import url(../styles/components/blockPopup.css);
 
 .wrapper{
     display: flex;
@@ -363,3 +364,8 @@
     background-color: rgba(80,184,60,0.1);
 }
 
+/* CSS Form popup */
+.form-header__left__checkbox{
+    display: flex;
+    align-items: center;
+}

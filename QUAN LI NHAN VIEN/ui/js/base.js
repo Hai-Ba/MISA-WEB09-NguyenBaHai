@@ -8,6 +8,7 @@ class Base{
         sidebarMinimized();
         popUpFormAdd();
         closeForm();
+        refreshTable();
     }
 
     async fetchData(){
@@ -24,6 +25,24 @@ class Base{
             displayErrorNotification("Không thể cập nhật được dữ liệu. Vui lòng kiểm tra lại kết nối internet.");
         }
     }
+}
+
+/**
+ * FUNCTION TO RELOAD TABLE
+ * 25/10/2022
+ * Nguyen Ba Hai
+ */
+function refreshTable(){
+    $("#refresh-table-btn").unbind('click');
+    $("#refresh-table-btn").click(async function(){
+        //refresh page
+        // let container = $(".content__table");
+        // var content = container.innerHTML;
+        // container.innerHTML = content;
+        let data = await apiGetAllData();
+        pagingFunction(data);
+        displaySuccessNotification("Làm mới bảng dữ liệu.");
+    });
 }
 
 /**
@@ -60,6 +79,7 @@ class Base{
     });
 }
 
+
 /**
  * FUNCTION TO OPEN THE FORM INPUT AND FOCUS
  * Use in Init function
@@ -92,7 +112,7 @@ class Base{
 }
 
 /**
- * FUNCTION TO CLOSE
+ * FUNCTION TO CLOSE FORM INPUT
  * Use in Init function
  * 22/10/2022
  * Nguyen Ba Hai
@@ -262,22 +282,32 @@ function fixedDropDownEvent(){
             }
         });
     });
+    //Apply Duplicate function
     $("#duplicate").unbind('click');
     $("#duplicate").click(function(){
         popUpFormDuplicate();
         //FILL CHO EMPLOYEE
         getFormFill(idRow);
-        //Goi API lay du lieu tu id
-        //Goi API xoa du lieu theo id
-        //
         fixedDD.hide();
     });
+
+    //Apply Delete function
     $("#delete").unbind('click');
     $("#delete").click(function(){
+        //Hiển thi dialog gợi ý
+        $("#ask-delete-eployee").css("display","flex");
+        //Khoi tao su kien cho popup
+        dialogPopupClose();
         //Goi API xoa du lieu
-        deleteByID(idRow);
+        $("#aggree-delete").unbind('click');
+        $("#aggree-delete").click(function(){
+            deleteByID(idRow);
+            $("#ask-delete-eployee").hide();
+        });
         fixedDD.hide();
     });
+
+    //Apply Stop function
     $("#stop").unbind('click');
     $("#stop").click(function(){
         console.log($(this).text());
@@ -441,7 +471,7 @@ function drawTable(dataSet){
                     if($(this).attr("tableTurple") == "DateOfBirth"){
                         tdBody.addClass("align-center");
                         cellValue = new Date(cellValue);
-                        cellValue = formatDate(cellValue);
+                        cellValue = formatDateDDMMYYYY(cellValue);
                     } 
                     if($(this).attr("tableTurple") == "Gender"){
                         cellValue = formatGender(cellValue);
