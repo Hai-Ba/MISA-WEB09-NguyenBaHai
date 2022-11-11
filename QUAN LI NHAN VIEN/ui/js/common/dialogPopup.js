@@ -35,3 +35,15 @@ function showErrorLostInfo(text){
     $("#must-fullfill").css("display","flex");
     dialogPopupClose();
 }
+
+/**
+ * EVENT SHOW DIALOG INFORM
+ * Nguyen Ba Hai
+ * 26/10/2022
+ * @param {*} text 
+ */
+ function showInformDialog(){
+    // $("#error-info-text").text(text);
+    $("#change-data-inform").css("display","flex");
+    // dialogPopupClose();
+}

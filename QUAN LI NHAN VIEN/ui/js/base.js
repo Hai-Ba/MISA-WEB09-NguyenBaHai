@@ -18,7 +18,7 @@ class Base{
                 let data = await apiGetAllData();
                 pagingFunction(data);
             } catch (error) {
-                displayErrorNotification("Không thể cập nhật được dữ liệu. Vui lòng kiểm tra lại kết nối internet.");
+                console.log(error);
             }
         }
         else{
@@ -35,10 +35,6 @@ class Base{
 function refreshTable(){
     $("#refresh-table-btn").unbind('click');
     $("#refresh-table-btn").click(async function(){
-        //refresh page
-        // let container = $(".content__table");
-        // var content = container.innerHTML;
-        // container.innerHTML = content;
         let data = await apiGetAllData();
         pagingFunction(data);
         displaySuccessNotification("Làm mới bảng dữ liệu.");
@@ -98,13 +94,27 @@ function refreshTable(){
 }
 
 /**
- * FUNCTION TO OPEN THE FORM FIX AND FOCUS
+ * FUNCTION TO OPEN THE FORM DUPLICATE AND FOCUS
  * Use in Duplicate function
  * 24/10/2022
  * Nguyen Ba Hai
  */
  function popUpFormDuplicate(){
     $("#form-title").text("Nhân bản thông tin");
+    $(".ms-dialog").css("display", "block");
+    $("#tab-focus").focus();
+    //Ham validate tu them cho tung Trang
+    dropdownEvent();
+}
+
+/**
+ * FUNCTION TO OPEN THE FORM FIX AND FOCUS
+ * Use in Duplicate function
+ * 25/10/2022
+ * Nguyen Ba Hai
+ */
+ function popUpFormChange(){
+    $("#form-title").text("Chỉnh sửa thông tin");
     $(".ms-dialog").css("display", "block");
     $("#tab-focus").focus();
     //Ham validate tu them cho tung Trang
@@ -181,7 +191,7 @@ function functionAppend(tdBody){
         class: 'sprite-bluearrdown',
     }).appendTo(button);
     $("<input>").attr({
-        class: 'ms-dropdown__box__text dropdown-text-modified blue',
+        class: 'ms-dropdown__box__text dropdown-text-modified blue change-data-row',
         type: 'text',
         placeholder: "Sửa",
         readonly: "readonly"
@@ -287,7 +297,7 @@ function fixedDropDownEvent(){
     $("#duplicate").click(function(){
         popUpFormDuplicate();
         //FILL CHO EMPLOYEE
-        getFormFill(idRow);
+        getFormFill(idRow,0);
         fixedDD.hide();
     });
 
@@ -482,7 +492,6 @@ function drawTable(dataSet){
                     tdBody.append(cellValue);
                 }
             }
-            // functionAppend($(this), tdBody);
             trBody.append(tdBody);
         });
         $("tbody").append(trBody);
@@ -496,12 +505,28 @@ function drawTable(dataSet){
 }
 
 /**
+ * FUNCTION INIT THE CHANGE VALUE FOR DATA IN TABLE
+ * Nguyen Ba Hai
+ * 25/10/2022
+ */
+function changeValueEvent(){
+    $(".change-data-row").each(function(){
+        $(this).click(function(){
+            let idRow = $(this).parent().parent().parent().parent().attr("id");
+            popUpFormChange();
+            getFormFill(idRow,2);
+        });
+    });
+}
+
+/**
  * FUNCTION INIT EVENT FOR TABLE
  * Nguyen Ba Hai
  * 23/10/2022
  */
 function tableFunctionInitEvent(){
     dropdownEvent();
+    changeValueEvent();
     fixedDropDownEvent();
     tableCheckBoxEvent();
 }

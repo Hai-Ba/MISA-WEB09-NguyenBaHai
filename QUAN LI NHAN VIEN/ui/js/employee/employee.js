@@ -41,7 +41,6 @@ function popUpFormAdd(){
     $(".ms-dialog").css("display", "block");
     $("#tab-focus").focus();
     //Ham validate tu them cho tung Trang
-    // validateFormAddEmployee(1);
     dropdownEvent();
 }
 
@@ -62,9 +61,9 @@ async function autoFillNewID(){
  * 24/10/2022
  */
 //Validate
-function validateFormAddEmployee(type){
+function validateFormAddEmployee(type,id){
     $("#ms-add-employee").unbind("click");
-    $("#ms-add-employee").click(function(){
+    $("#ms-add-employee").click(async function(){
         if(!$("#tab-focus").val()|| !$("#employee-name-field").val() || !$("#department-name-field").val()  || !isRightFormat($("#tab-focus").val())){
             if(!$("#tab-focus").val()){
                 $("#tab-focus").addClass("ms-input-missing");
@@ -123,6 +122,9 @@ function validateFormAddEmployee(type){
             $(".ms-dialog-wrapper")[0].reset(); //Reset form
             $(".ms-dialog").css("display", "none");
             //Thuc hien hoi API them moi nhan vien
+            if(type == 2){
+                await apiDeleteById(id,0);
+            }
             addEmployee(employeeData,type);  
         }
     });
@@ -142,10 +144,15 @@ function validateFormAddEmployee(type){
     })
 }
 
-//Close form
+/**
+ * FUNCTION TO CLOSE FORM INPUT
+ * Use in Init function
+ * 25/10/2022
+ * Nguyen Ba Hai
+ * @Override
+ */
 function closeForm(){
     $(".ms-dialog-wrapper__header__exit").click(function(){
-        //clear thoong tin form
         $("#tab-focus").removeClass("ms-input-missing");
         $("#tab-focus ~ .ms-textbox__warning__missing").hide();
         $("#tab-focus ~ .ms-textbox__warning__format").hide();
@@ -157,6 +164,7 @@ function closeForm(){
         $(".ms-dialog").css("display", "none");
         fixedDropDownEvent();
     });
+    
     $("#ms-close-form").click(function(){
         //clear thong tin tren form
         $("#tab-focus").removeClass("ms-input-missing");
@@ -176,22 +184,28 @@ function closeForm(){
         fixedDropDownEvent();
     });
 }
-
-//Add employee
+/**
+ * FUNCTION ADD EMPLOYEE TO DB
+ * Used in validateFormAddEmployee()
+ * @param {*} employeeData 
+ * @param {*} type 
+ */
 async function addEmployee(employeeData,type){
-    await apiPostData(employeeData,type);
-    let data = await apiGetAllData();
-    pagingFunction(data);
+    if(employeeData){
+        await apiPostData(employeeData,type);
+        let data = await apiGetAllData();
+        pagingFunction(data);
+    }
 }
 
 //Duplicate handle
-async function getFormFill(id){
+async function getFormFill(id,type){
+    //Type 1 la fill cho nhan ban, type 0 la fill cho chinh sua
     try {
         //Lay data tu id
         let data = await apiGetDataById(id);
 
-        //Validate va them lai
-        await validateFormAddEmployee(0);
+        
         //Fill vao form
         let departName;
         $("#department-mapping").find("div").each(function(){
@@ -200,7 +214,19 @@ async function getFormFill(id){
             }
         });
         //Lay 3 gia tri quan trong
-        $("#tab-focus").val(data.EmployeeCode);
+        if(type == 0){
+            //Validate va them lai
+            await validateFormAddEmployee(type);
+            //Lay id moi de nhan ban
+            let newID = await apiGetNewId();
+            $("#tab-focus").val(newID);
+        } else if(type == 2){
+            //Validate va them lai
+            await validateFormAddEmployee(type,id);
+            //Lay id cu de chinh sua
+            $("#tab-focus").val(data.EmployeeCode);
+
+        }
         $("#employee-name-field").val(data.EmployeeName);
         $("#department-name-field").val(departName);
         // $("input[name='dob']").val(new Date(data.DateOfBirth).toLocaleDateString());
@@ -209,10 +235,6 @@ async function getFormFill(id){
         $("input[name='bankName']").val(data.BankName);
         $("input[name='bankProvince']").val(data.BankProvinceName);
         $("input[name='address']").val(data.Address);
-
-        //Xoa du lieu ban dau
-        await apiDeleteById(id,0);
-
     } catch (error) {
         displayErrorNotification("Thông tin nhân viên này đã bị xóa! Không thể nhân bản");
     }

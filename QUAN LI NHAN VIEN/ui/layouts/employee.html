@@ -348,19 +348,19 @@
                                                 <input type="checkbox" class="mg-top6 ms-checkbox" id="main-check">
                                             </th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
-                                                style="min-width: 120px;" tableTurple="EmployeeCode">MÃ NHÂN VIÊN</th>
+                                                style="min-width: 150px;" tableTurple="EmployeeCode">MÃ NHÂN VIÊN</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
-                                                style="min-width: 200px;" tableTurple="EmployeeName">TÊN NHÂN VIÊN</th>
+                                                style="min-width: 220px;" tableTurple="EmployeeName">TÊN NHÂN VIÊN</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
                                                 style="min-width: 110px;" tableTurple="Gender">GIỚI TÍNH</th>
                                                 <th class="ms-table__col pd-left16 pd-right16 align-center"
-                                                style="min-width: 120px;" tableTurple="DateOfBirth">NGÀY SINH</th>
+                                                style="min-width: 150px;" tableTurple="DateOfBirth">NGÀY SINH</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
-                                                title="Số chứng minh nhân dân" style="min-width: 150px;" tableTurple="IdentityNumber">SỐ CMND</th>
+                                                title="Số chứng minh nhân dân" style="min-width: 180px;" tableTurple="IdentityNumber">SỐ CMND</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
-                                                style="min-width: 200px;" tableTurple="PositionName">CHỨC DANH</th>
+                                                style="min-width: 220px;" tableTurple="PositionName">CHỨC DANH</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
-                                                style="min-width: 200px;" tableTurple="DepartmentName">TÊN ĐƠN VỊ</th>
+                                                style="min-width: 220px;" tableTurple="DepartmentName">TÊN ĐƠN VỊ</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
                                                 style="min-width: 150px;" tableTurple="BankAccountNumber">SỐ TÀI KHOẢN</th>
                                             <th class="ms-table__col pd-left16 pd-right16 align-left"
@@ -427,6 +427,7 @@
             </div>
         </div>
     </div>
+    
     <!-- FIX MESSAGE POPUP -->
     <div class="ms-notification ms-notification-success" style="
         display: none;
@@ -505,16 +506,16 @@
     </div>
 
     <!-- Three buttons inform Dialog popup  -->
-    <div class="ms-inform-block" id="change-data">
+    <div class="ms-inform-block" id="change-data-inform">
         <div class="ms-inform-block__top">
             <div class="ms-inform-block__top__icon"></div>
-            <div class="ms-inform-block__top__text">Dữ liệu đã bị thay đổi. Bạn có muốn cất không?</div>
+            <div class="ms-inform-block__top__text" id="inform-text">Dữ liệu đã bị thay đổi. Bạn có muốn cất không?</div>
         </div>
         <div class="ms-inform-block__bottom">
-            <button class="ms-button-secondary close-form">Hủy</button>
+            <button class="ms-button-secondar" id="save-close">Hủy</button>
             <div style="display: flex;">
-                <button class="ms-button-secondary" style="margin-right: 8px;">Không</button>
-                <button class="ms-button">Có</button>
+                <button class="ms-button-secondary" style="margin-right: 8px;" id="nosave-close">Không</button>
+                <button class="ms-button" id="add-close">Có</button>
             </div>
         </div>
     </div>

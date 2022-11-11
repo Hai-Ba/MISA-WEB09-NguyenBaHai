@@ -147,14 +147,6 @@ tbody td:last-child{
     /* border-left: 1px solid #E0E0E0; */
 }
 
-/* tbody td:last-child{
-    position: sticky;
-    left: 0;
-    z-index: 1;
-    height: 48px;
-    background-color: #FFF;
-} */
-
 .ms-table__body{
     height: 100%;
     /* overflow-x: auto; */
