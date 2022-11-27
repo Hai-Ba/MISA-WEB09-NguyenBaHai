@@ -1,0 +1,15 @@
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\bin\Debug\net6.0\MISA.AMIS.KeToan.DL.deps.json
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\bin\Debug\net6.0\MISA.AMIS.KeToan.DL.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\bin\Debug\net6.0\MISA.AMIS.KeToan.DL.pdb
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\bin\Debug\net6.0\MISA.AMIS.KeToan.Common.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\bin\Debug\net6.0\MISA.AMIS.KeToan.Common.pdb
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.csproj.AssemblyReference.cache
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.GeneratedMSBuildEditorConfig.editorconfig
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.AssemblyInfoInputs.cache
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.AssemblyInfo.cs
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.csproj.CoreCompileInputs.cache
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.csproj.CopyComplete
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\refint\MISA.AMIS.KeToan.DL.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\MISA.AMIS.KeToan.DL.pdb
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.DL\obj\Debug\net6.0\ref\MISA.AMIS.KeToan.DL.dll

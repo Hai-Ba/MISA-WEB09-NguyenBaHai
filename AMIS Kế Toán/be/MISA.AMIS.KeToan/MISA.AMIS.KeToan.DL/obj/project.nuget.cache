@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "yJe07TZjYhmZ9Yem9EhP0f2sl6wQCP0iU+sIXfb6Fen5U6hR40XwdaxHK11/0Qq2mEd1I/G/zQrowHtltZsWbA==",
+  "success": true,
+  "projectFilePath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.DL\\MISA.AMIS.KeToan.DL.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ACER\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\ACER\\.nuget\\packages\\mysqlconnector\\2.1.13\\mysqlconnector.2.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

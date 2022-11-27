@@ -1,0 +1,176 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Dapper/2.0.123": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MySqlConnector/2.1.13": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MISA.AMIS.KeToan.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MISA.AMIS.KeToan.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MISA.AMIS.KeToan.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Dapper/2.0.123": {
+      "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "type": "package",
+      "path": "dapper/2.0.123",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.123.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "MySqlConnector/2.1.13": {
+      "sha512": "Y3qts7mnuZ4EGEQOI4xJ1n+9ZJOmrcwD2CdqyAXuQONBkrc2ENDywE6ZBysFaRojXrnWzLXpc595+GYlN/PI9Q==",
+      "type": "package",
+      "path": "mysqlconnector/2.1.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net45/MySqlConnector.dll",
+        "lib/net45/MySqlConnector.xml",
+        "lib/net461/MySqlConnector.dll",
+        "lib/net461/MySqlConnector.xml",
+        "lib/net471/MySqlConnector.dll",
+        "lib/net471/MySqlConnector.xml",
+        "lib/net5.0/MySqlConnector.dll",
+        "lib/net5.0/MySqlConnector.xml",
+        "lib/net6.0/MySqlConnector.dll",
+        "lib/net6.0/MySqlConnector.xml",
+        "lib/netcoreapp3.1/MySqlConnector.dll",
+        "lib/netcoreapp3.1/MySqlConnector.xml",
+        "lib/netstandard2.0/MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlConnector.xml",
+        "lib/netstandard2.1/MySqlConnector.dll",
+        "lib/netstandard2.1/MySqlConnector.xml",
+        "logo.png",
+        "mysqlconnector.2.1.13.nupkg.sha512",
+        "mysqlconnector.nuspec"
+      ]
+    },
+    "MISA.AMIS.KeToan.Common/1.0.0": {
+      "type": "project",
+      "path": "../MISA.AMIS.KeToan.Common/MISA.AMIS.KeToan.Common.csproj",
+      "msbuildProject": "../MISA.AMIS.KeToan.Common/MISA.AMIS.KeToan.Common.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Dapper >= 2.0.123",
+      "MISA.AMIS.KeToan.Common >= 1.0.0",
+      "MySqlConnector >= 2.1.13"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\ACER\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.DL\\MISA.AMIS.KeToan.DL.csproj",
+      "projectName": "MISA.AMIS.KeToan.DL",
+      "projectPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.DL\\MISA.AMIS.KeToan.DL.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.DL\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj": {
+              "projectPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "Dapper": {
+            "target": "Package",
+            "version": "[2.0.123, )"
+          },
+          "MySqlConnector": {
+            "target": "Package",
+            "version": "[2.1.13, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

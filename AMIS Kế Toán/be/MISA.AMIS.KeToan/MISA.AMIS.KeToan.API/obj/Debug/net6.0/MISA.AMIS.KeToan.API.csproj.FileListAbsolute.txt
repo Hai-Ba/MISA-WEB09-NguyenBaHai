@@ -27,3 +27,16 @@ D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\obj\Debug\net6.0\ref
 D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\obj\Debug\net6.0\MISA.AMIS.KeToan.API.pdb
 D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\obj\Debug\net6.0\MISA.AMIS.KeToan.API.genruntimeconfig.cache
 D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\obj\Debug\net6.0\ref\MISA.AMIS.KeToan.API.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\MISA.AMIS.KeToan.BL.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\MISA.AMIS.KeToan.Common.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\MISA.AMIS.KeToan.DL.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\MISA.AMIS.KeToan.BL.pdb
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\MISA.AMIS.KeToan.Common.pdb
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\MISA.AMIS.KeToan.DL.pdb
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\ClosedXML.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\DocumentFormat.OpenXml.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\ExcelNumberFormat.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\Irony.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\SixLabors.Fonts.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\System.IO.Packaging.dll
+D:\AMIS Kế Toán\be\MISA.AMIS.KeToan\MISA.AMIS.KeToan.API\bin\Debug\net6.0\XLParser.dll

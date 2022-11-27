@@ -1,106 +1,33 @@
-﻿using Dapper;
+﻿using ClosedXML.Excel;
+using Dapper;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Mvc;
-using MISA.AMIS.KeToan.API.Entities;
+using MISA.AMIS.KeToan.BL;
+using MISA.AMIS.KeToan.Common;
+using MISA.AMIS.KeToan.Common.Entities;
+using MISA.AMIS.KeToan.Common.Entities.DTO;
+using MISA.AMIS.KeToan.Common.Enums;
+using MISA.AMIS.KeToan.DL;
 using MySqlConnector;
 using System.Data;
+using System.Runtime.Versioning;
+using Microsoft.AspNetCore.Http;
 
 namespace MISA.AMIS.KeToan.API.Controllers
 {
-    [Route("api/v1/[controller]")] //Attribute
     [ApiController]
-    public class EmployeesController : ControllerBase
+    public class EmployeesController : BasesController<Employee>
     {
-        /// <summary>
-        /// API Lấy danh sách tất cả bản ghi
-        /// Author: Nguyễn Bá Hải
-        /// Date: 3/11/2022
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public IActionResult GetAllEmployees([FromQuery] string? keyword)
+        #region Field
+        private IEmployeeBL _employeeBL;
+        #endregion
+
+        #region Constructor
+        public EmployeesController(IEmployeeBL employeeBL) : base(employeeBL)
         {
-            try
-            {
-                //Khoi tao ket noi toi DB
-                string connectionString = "Server=localhost;Port=3306;Database=misaamisketoan.nbhhai.gpbl_development;Uid=root;Pwd=hai12122001;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                //Chuan bi Store Proc
-                string storeProcName = "Proc_employee_GetAllEmployees";
-
-                //Chuan bi tham so
-                var parameters = new DynamicParameters();
-                parameters.Add("@Filter", keyword);
-
-                //Thuc hien goi vao DB
-                var employees = mySqlConnection.Query(storeProcName,parameters,commandType: CommandType.StoredProcedure);
-
-                //Xu li ket qua tra ve
-                if (employees != null)
-                {
-                    return StatusCode(StatusCodes.Status200OK, employees);//Trả về mã 200 và danh sách nhân viên
-                }
-                return StatusCode(StatusCodes.Status200OK, new List<Employee>());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception.",
-                    UserMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA.",
-                    MoreInfo = "SMT HERE",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
-            }
+            _employeeBL = employeeBL;
         }
-
-        /// <summary>
-        /// API Lấy ra bản ghi theo ID
-        /// Author: Nguyễn Bá Hải
-        /// Date: 3/11/2022 
-        /// </summary>
-        /// <param name="employeeID"></param>
-        /// <returns></returns>
-        [HttpGet("{employeeID}")]
-        public IActionResult GetEmployeeByID([FromRoute] Guid employeeID) 
-        {
-            try
-            {
-                //Khoi tao ket noi toi DB
-                string connectionString = "Server=localhost;Port=3306;Database=misaamisketoan.nbhhai.gpbl_development;Uid=root;Pwd=hai12122001;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                //Chuan bi Store Proc
-                string storeProcName = "Proc_employee_GetEmployeeByID";
-
-                //Chuan bi tham so dau vao
-                var parameters = new DynamicParameters();
-                parameters.Add("@EmployeeID", employeeID);
-
-                //Thuc hien goi vao DB
-                var employee = mySqlConnection.QueryFirstOrDefault<Employee>(storeProcName, parameters, commandType: CommandType.StoredProcedure);
-
-                if (employee != null)
-                {
-                    return StatusCode(StatusCodes.Status200OK, employee);
-                }
-                return StatusCode(StatusCodes.Status404NotFound);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception.",
-                    UserMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA.",
-                    MoreInfo = "SMT HERE",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
-            }
-        }
+        #endregion
 
         /// <summary>
         /// API lấy danh sách bản ghi theo phân trang
@@ -120,38 +47,20 @@ namespace MISA.AMIS.KeToan.API.Controllers
         {
             try
             {
-                //Khoi tao ket noi toi DB
-                string connectionString = "Server=localhost;Port=3306;Database=misaamisketoan.nbhhai.gpbl_development;Uid=root;Pwd=hai12122001;";
-                var mySqlConnection = new MySqlConnection(connectionString);
+                //Thuc hien goi vao BL
+                var employees = _employeeBL.GetEmployeeByPaging(keyword, limit, pageNumber);
+                return StatusCode(StatusCodes.Status200OK, employees);
 
-                //Chuan bi Store Proc
-                string storeProcName = "Proc_employee_GetByFiltering";
-
-                //Chuan bi tham so dau vao
-                int offset = (pageNumber - 1) * limit;
-                var parameters = new DynamicParameters();
-                parameters.Add("@Filter", keyword);
-                parameters.Add("@Limit", limit);
-                parameters.Add("@Offset", offset);
-
-                //Thuc hien goi vao DB
-                var employees = mySqlConnection.Query(storeProcName, parameters, commandType: CommandType.StoredProcedure);
-
-                if (employees != null)
-                {
-                    return StatusCode(StatusCodes.Status200OK, employees);
-                }
-                return StatusCode(StatusCodes.Status200OK, new List<Employee>());
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception.",
-                    UserMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA.",
-                    MoreInfo = "SMT HERE",
+                    ErrorCode = Exceptions.Exception,
+                    DevMsg = Resources.DevMsg_Exception,
+                    UserMsg = Resources.UserMsg_Exception,
+                    MoreInfo = Resources.MoreInfo_Exception,
                     TraceId = HttpContext.TraceIdentifier,
                 });
             }
@@ -164,19 +73,12 @@ namespace MISA.AMIS.KeToan.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("NewEmployeeCode")]
-        public IActionResult GetNewEmployeeCode() 
+        public IActionResult GetNewEmployeeCode()
         {
             try
             {
-                //Khoi tao ket noi toi DB
-                string connectionString = "Server=localhost;Port=3306;Database=misaamisketoan.nbhhai.gpbl_development;Uid=root;Pwd=hai12122001;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                //Chuan bi Store Proc
-                string storeProcName = "Proc_employee_GetBiggestID";
-
-                //Thuc hien goi vao DB
-                string employeeCode = mySqlConnection.QueryFirstOrDefault<String>(storeProcName, commandType: CommandType.StoredProcedure);
+                //Thuc hien goi vao BL
+                string employeeCode = _employeeBL.GetNewEmployeeCode();
 
                 if (employeeCode != "")
                 {
@@ -184,17 +86,17 @@ namespace MISA.AMIS.KeToan.API.Controllers
                     newEmployeeCode = "NV" + (Int64.Parse(employeeCode.Substring(2)) + 1).ToString();
                     return StatusCode(StatusCodes.Status200OK, newEmployeeCode);
                 }
-                return StatusCode(StatusCodes.Status200OK, "NV001");
+                return StatusCode(StatusCodes.Status200OK, "NV000001");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception.",
-                    UserMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA.",
-                    MoreInfo = "SMT HERE",
+                    ErrorCode = Exceptions.Exception,
+                    DevMsg = Resources.DevMsg_Exception,
+                    UserMsg = Resources.UserMsg_Exception,
+                    MoreInfo = Resources.MoreInfo_Exception,
                     TraceId = HttpContext.TraceIdentifier,
                 });
             }
@@ -208,62 +110,25 @@ namespace MISA.AMIS.KeToan.API.Controllers
         /// <param name="employee">employee truyền vào Body</param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult PostNewEmployee([FromBody] Employee employee) 
+        public IActionResult InsertNewEmployee([FromBody] Employee employee)
         {
             try
             {
-                //Khoi tao ket noi toi DB
-                string connectionString = "Server=localhost;Port=3306;Database=misaamisketoan.nbhhai.gpbl_development;Uid=root;Pwd=hai12122001;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                //Chuan bi Store Proc
-                string storeProcName = "Proc_employee_PostEmployee";
-
-                //Chuan bi tham so truyen vao
-                var newEmployeeID = Guid.NewGuid();
-                var parameters = new DynamicParameters();
-                parameters.Add("@EmployeeCode", employee.EmployeeCode);
-                parameters.Add("@EmployeeName", employee.EmployeeName);
-                parameters.Add("@DateOfBirth", employee.DateOfBirth);
-                parameters.Add("@Gender", employee.Gender);
-                parameters.Add("@IdentityNumber", employee.IdentityNumber);
-                parameters.Add("@IdentityDate", employee.IdentityDate);
-                parameters.Add("@IdentityPlace", employee.IdentityPlace);
-                parameters.Add("@Address", employee.Address);
-                parameters.Add("@PhoneNumber", employee.PhoneNumber);
-                parameters.Add("@TelephoneNumber", employee.TelephoneNumber);
-                parameters.Add("@Email", employee.Email);
-                parameters.Add("@BankAccountNumber", employee.BankAccountNumber);
-                parameters.Add("@BankName", employee.BankName);
-                parameters.Add("@BankProvinceName", employee.BankProvinceName);
-                parameters.Add("@DepartmentID", employee.DepartmentID);
-                parameters.Add("@PositionName", employee.PositionName);
-
-                //Thuc hien goi vao DB
-                var postedEmployee = mySqlConnection.QueryFirstOrDefault<Employee>(storeProcName, parameters, commandType: CommandType.StoredProcedure);
-
-                if (postedEmployee != null)
+                var blReturn = _employeeBL.InsertNewEmployee(employee);
+                if (blReturn.IsSuccess)
                 {
-                    return StatusCode(StatusCodes.Status201Created, postedEmployee.EmployeeID);
+                    return StatusCode(StatusCodes.Status201Created, blReturn.Data);
                 }
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 2,
-                    DevMsg = "Database insert failed.",
-                    UserMsg = "Thêm mới nhân viên thất bại.",
-                    MoreInfo = "SMT HERE",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
+                return StatusCode(StatusCodes.Status400BadRequest, blReturn.Data);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError, new
                 {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception.",
-                    UserMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA.",
-                    MoreInfo = "SMT HERE",
+                    DevMsg = Resources.DevMsg_Exception,
+                    UserMsg = Resources.UserMsg_Exception,
+                    MoreInfo = Resources.MoreInfo_Exception,
                     TraceId = HttpContext.TraceIdentifier,
                 });
             }
@@ -278,116 +143,141 @@ namespace MISA.AMIS.KeToan.API.Controllers
         /// <param name="employeeId">Mã Guid id của nhân viên cần sửa</param>
         /// <returns></returns>
         [HttpPut("{employeeID}")]
-        public IActionResult ModifyAnEmployee([FromBody] Employee employee, [FromRoute] Guid employeeID) 
+        public IActionResult UpdateAnEmployee([FromBody] Employee employee, [FromRoute] Guid employeeID)
         {
             try
             {
-                //Khoi tao ket noi toi DB
-                string connectionString = "Server=localhost;Port=3306;Database=misaamisketoan.nbhhai.gpbl_development;Uid=root;Pwd=hai12122001;";
-                var mySqlConnection = new MySqlConnection(connectionString);
+                var blReturn = _employeeBL.UpdateAnEmployee(employee, employeeID);
 
-                //Chuan bi Store Proc
-                string storeProcName = "Proc_employee_ModifyEmployee";
-
-                //Chuan bi tham so truyen vao
-                var parameters = new DynamicParameters();
-                parameters.Add("@EmployeeID", employeeID);
-                parameters.Add("@EmployeeCode", employee.EmployeeCode);
-                parameters.Add("@EmployeeName", employee.EmployeeName);
-                parameters.Add("@DateOfBirth", employee.DateOfBirth);
-                parameters.Add("@Gender", employee.Gender);
-                parameters.Add("@IdentityNumber", employee.IdentityNumber);
-                parameters.Add("@IdentityDate", employee.IdentityDate);
-                parameters.Add("@IdentityPlace", employee.IdentityPlace);
-                parameters.Add("@Address", employee.Address);
-                parameters.Add("@PhoneNumber", employee.PhoneNumber);
-                parameters.Add("@TelephoneNumber", employee.TelephoneNumber);
-                parameters.Add("@Email", employee.Email);
-                parameters.Add("@BankAccountNumber", employee.BankAccountNumber);
-                parameters.Add("@BankName", employee.BankName);
-                parameters.Add("@BankProvinceName", employee.BankProvinceName);
-                parameters.Add("@DepartmentID", employee.DepartmentID);
-                parameters.Add("@PositionName", employee.PositionName);
-
-                //Thuc hien goi vao DB
-                var numberOfAffectedRows = mySqlConnection.Execute(storeProcName, parameters, commandType: CommandType.StoredProcedure);
-
-                if (numberOfAffectedRows > 0)
+                if (blReturn.IsSuccess)
                 {
-                    return StatusCode(StatusCodes.Status201Created, employeeID);
+                    return StatusCode(StatusCodes.Status201Created, blReturn.Data);
                 }
-                return StatusCode(StatusCodes.Status500InternalServerError, new
-                {
-                    ErrorCode = 3,
-                    DevMsg = "Database modified failed.",
-                    UserMsg = "Sửa mới nhân viên thất bại.",
-                    MoreInfo = "SMT HERE",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
+                return StatusCode(StatusCodes.Status400BadRequest, blReturn.Data);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception.",
-                    UserMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA.",
-                    MoreInfo = "SMT HERE",
+                    ErrorCode = Exceptions.Exception,
+                    DevMsg = Resources.DevMsg_Exception,
+                    UserMsg = Resources.UserMsg_Exception,
+                    MoreInfo = Resources.MoreInfo_Exception,
                     TraceId = HttpContext.TraceIdentifier,
                 });
             }
         }
 
         /// <summary>
-        /// API xóa 1 nhân viên theo ID
+        /// API xuất file Excel
         /// Author: Nguyễn Bá Hải
-        /// Date:3/11/2022
+        /// Date:22/11/2022
         /// </summary>
-        /// <param name="employeeID">ID của nhân viên muốn xóa</param>
+        /// <param name="listData"></param>
         /// <returns></returns>
-        [HttpDelete("{employeeID}")]
-        public IActionResult DeleteAnEmployee([FromRoute] Guid employeeID) 
+        [HttpGet("ExportExcel")]
+        public IActionResult ExportExcel(
+            [FromQuery] string? keyword,
+            [FromQuery] int limit,
+            [FromQuery] int pageNumber
+            )
         {
+            //Thuc hien goi vao BL
             try
             {
-                //Khoi tao ket noi toi DB
-                string connectionString = "Server=localhost;Port=3306;Database=misaamisketoan.nbhhai.gpbl_development;Uid=root;Pwd=hai12122001;";
-                var mySqlConnection = new MySqlConnection(connectionString);
-
-                //Chuan bi Store Proc
-                string storeProcName = "Proc_employee_DeleteEmployeeByID";
-
-                //Chuan bi tham so truyen vao
-                var parameters = new DynamicParameters();
-                parameters.Add("@EmployeeID", employeeID);
-
-                //Thuc hien goi vao DB
-                var numberOfAffectedRows = mySqlConnection.Execute(storeProcName, parameters, commandType: CommandType.StoredProcedure);
-
-                if (numberOfAffectedRows > 0)
+                var employees = _employeeBL.GetEmployeeByPaging(keyword, limit, pageNumber);
+                if (employees != null && employees.Count > 0)
                 {
-                    return StatusCode(StatusCodes.Status200OK, employeeID);
+                    using (var workbook = new XLWorkbook())
+                    {
+                        IXLWorksheet workSheet = workbook.Worksheets.Add("Employees");//Name Worksheet
+                        var startRowData = 3;//Start from row 3
+                        int count = 0;//Number of row data
+                        var endRowData = startRowData + limit;//End at row 3 + limit
+                        #region Tiêu đề cho file excel
+                        workSheet.Range("A1:I1").Row(1).Merge();
+                        workSheet.Cell("A1").Value = "DANH SÁCH NHÂN VIÊN";
+                        workSheet.Range("A1").Style.Font.FontSize = 16;
+                        workSheet.Range("A1").Style.Font.SetFontName("Arial");
+                        workSheet.Range("A1").Style.Font.Bold = true;
+                        workSheet.Cell("A1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                        workSheet.Range("A2:I2").Row(1).Merge();
+                        workSheet.Row(1).Height = 20.25;
+                        workSheet.Row(2).Height = 21.75;
+                        workSheet.Range("A3:I3").Style.Fill.SetBackgroundColor(XLColor.LightGray);
+                        workSheet.Range("A3:I3").Style.Font.SetFontName("Arial");
+                        workSheet.Range("A3:I3").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                        workSheet.Range("A3:I3").Style.Font.Bold = true;
+                        workSheet.Range($"A3:I{endRowData}").Style.Alignment.WrapText = true;
+                        workSheet.Range($"A3:I{endRowData}").Style.Border.SetInsideBorder(XLBorderStyleValues.Thin);
+                        workSheet.Range($"A3:I{endRowData}").Style.Border.SetOutsideBorder(XLBorderStyleValues.Thin);
+                        #endregion
+                        //Set column width
+                        workSheet.Column("A").Width = 4.3;
+                        workSheet.Column("B").Width = 15.3;
+                        workSheet.Column("C").Width = 26;
+                        workSheet.Column("D").Width = 12;
+                        workSheet.Column("E").Width = 15.3;
+                        workSheet.Column("F").Width = 26;
+                        workSheet.Column("G").Width = 25;
+                        workSheet.Column("H").Width = 15.3;
+                        workSheet.Column("I").Width = 26;
+
+                        workSheet.Row(startRowData).Height = 15;
+                        workSheet.Row(startRowData).Style.Font.FontSize = 10;
+                        workSheet.Cell(startRowData, 1).Value = "STT";
+                        workSheet.Cell(startRowData, 2).Value = "Mã nhân viên";
+                        workSheet.Cell(startRowData, 3).Value = "Tên nhân viên";
+                        workSheet.Cell(startRowData, 4).Value = "Giới tính";
+                        workSheet.Cell(startRowData, 5).Value = "Ngày sinh";
+                        workSheet.Cell(startRowData, 6).Value = "Chức danh";
+                        workSheet.Cell(startRowData, 7).Value = "Tên đơn vị";
+                        workSheet.Cell(startRowData, 8).Value = "Số tài khoản";
+                        workSheet.Cell(startRowData, 9).Value = "Tên ngân hàng";
+                        foreach (var employee in employees)
+                        {
+                            startRowData++;
+                            count++;
+                            workSheet.Row(startRowData).Height = 15;
+                            workSheet.Row(startRowData).Style.Font.SetFontName("Times New Roman");
+                            workSheet.Cell(startRowData, 1).Value = count;
+                            workSheet.Cell(startRowData, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
+                            workSheet.Cell(startRowData, 2).Value = employee.EmployeeCode;
+                            workSheet.Cell(startRowData, 3).Value = employee.EmployeeName;
+                            workSheet.Cell(startRowData, 4).Value = employee.Gender;
+                            workSheet.Cell(startRowData, 5).Value = employee.DateOfBirth;
+                            workSheet.Cell(startRowData, 5).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                            workSheet.Cell(startRowData, 6).Value = employee.PositionName;
+                            workSheet.Cell(startRowData, 7).Value = employee.DepartmentName;
+                            workSheet.Cell(startRowData, 8).Value = employee.BankAccountNumber;
+                            workSheet.Cell(startRowData, 8).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
+                            workSheet.Cell(startRowData, 9).Value = employee.BankName;
+                        }
+
+                        using (var stream = new MemoryStream())
+                        {
+                            workbook.SaveAs(stream);
+                            var content = stream.ToArray();
+
+                            return File(
+                                content,
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "employees.xlsx");
+                        }
+                    }
                 }
-                return StatusCode(StatusCodes.Status404NotFound, new
-                {
-                    ErrorCode = 4,
-                    StatusCode = 404,
-                    DevMsg = "Employee ID not exist.",
-                    UserMsg = "Nhân viên không tồn tại, không thể xóa.",
-                    MoreInfo = "SMT HERE",
-                    TraceId = HttpContext.TraceIdentifier,
-                });
+                return StatusCode(StatusCodes.Status200OK);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
-                    ErrorCode = 1,
-                    DevMsg = "Catched an exception.",
-                    UserMsg = "Có lỗi xảy ra! Vui lòng liên hệ với MISA.",
-                    MoreInfo = "SMT HERE",
+                    ErrorCode = Exceptions.Exception,
+                    DevMsg = Resources.DevMsg_Exception,
+                    UserMsg = Resources.UserMsg_Exception,
+                    MoreInfo = Resources.MoreInfo_Exception,
                     TraceId = HttpContext.TraceIdentifier,
                 });
             }
