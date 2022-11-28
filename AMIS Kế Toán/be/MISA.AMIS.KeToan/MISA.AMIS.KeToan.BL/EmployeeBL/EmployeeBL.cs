@@ -119,36 +119,16 @@ namespace MISA.AMIS.KeToan.BL
                     new ErrorResult(Exceptions.DuplicateCode, Resources.UserMsg_DuplicateCode, Resources.DevMsg_DuplicateCode));
             }
             return employeeValidated;
-            ////Validate Duplicate code
-            //if (employee.EmployeeCode != null && _employeeDL.CheckDuplicateCode(employee.EmployeeCode) != 0)// Ma bi trung
-            //{
-            //    return new ResponseService(false, new ErrorResult
-            //    {
-            //        ErrorCode = Exceptions.DuplicateCode,
-            //        DevMsg = Resources.DevMsg_DuplicateCode,
-            //        UserMsg = Resources.UserMsg_DuplicateCode,
-            //        MoreInfo = Resources.MoreInfo_DuplicateCode,
-            //        //TraceId = HttpContext.TraceIdentifier,
-            //    });
-            //}
-            //else
-            //{
-            //    ResponseService employeeValidated = ValidateData(employee);
-            //    if (employeeValidated.IsSuccess)
-            //    {
-            //        int rowAffected = _employeeDL.UpdateAnEmployee(employee, employeeID);
-            //        if (rowAffected > 0)
-            //        {
-            //            return new ResponseService(true, rowAffected);
-            //        }
-            //        //Trường hợp thêm không thành công sinh ra lỗi Ngoaij le
-            //        return new ResponseService(false,
-            //            new ErrorResult(Exceptions.Exception, Resources.UserMsg_Exception, Resources.DevMsg_Exception));
-            //    }
-            //    return employeeValidated;
-            //}
+            
         }
 
+        /// <summary>
+        /// Hàm validate backend
+        /// Nguyễn Bá Hải
+        /// 20/11/2022
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         private ResponseService ValidateData(Employee employee)
         {
             var validateProperties = employee.GetType().GetProperties().Where(prop => Attribute.IsDefined(prop, typeof(MyAttributes)));
@@ -247,6 +227,12 @@ namespace MISA.AMIS.KeToan.BL
             return new ResponseService(true, employee);
         }
 
+        /// <summary>
+        /// Hàm check mã code
+        /// Nguyễn Bá Hải-21/11/2022
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public bool CodeValidation(string? code) 
         {
             string pattern = @"(^[N][V]\d{5,6}$)";
@@ -258,6 +244,12 @@ namespace MISA.AMIS.KeToan.BL
             return false;
         }
 
+        /// <summary>
+        /// Hàm check tuổi khi input ngày
+        /// Nguyễn Bá Hải-21/11/2022
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public bool AgeValidation(object? date)
         {
             if (date != null) 
@@ -268,6 +260,12 @@ namespace MISA.AMIS.KeToan.BL
             return true;
         }
 
+        /// <summary>
+        /// Hàm check mã ngày ko lớn hơn ngày hiện tại
+        /// Nguyễn Bá Hải-21/11/2022
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public bool DateValidation(object? date)
         {
             if (date != null)
@@ -277,6 +275,12 @@ namespace MISA.AMIS.KeToan.BL
             return true;
         }
 
+        /// <summary>
+        /// Hàm check mã email
+        /// Nguyễn Bá Hải-21/11/2022
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public bool EmailValidation(string? email)
         {
             Regex codeRG = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
@@ -287,6 +291,12 @@ namespace MISA.AMIS.KeToan.BL
             return true;
         }
 
+        /// <summary>
+        /// Hàm check sdt
+        /// Nguyễn Bá Hải-21/11/2022
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
         public bool PhoneValidation(string? phone)
         {
             Regex codeRG = new Regex(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$");
@@ -297,6 +307,12 @@ namespace MISA.AMIS.KeToan.BL
             return true;
         }
 
+        /// <summary>
+        /// Hàm check Số in put là ko lớn hơn 15
+        /// Nguyễn Bá Hải-21/11/2022
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public bool Max15NumberValidation(string? number)
         {
             Regex codeRG = new Regex("^\\d{7,15}$");

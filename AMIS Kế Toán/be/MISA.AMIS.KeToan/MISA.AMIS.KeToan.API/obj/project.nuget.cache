@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rcqZaseogKk8shcsrlVWJWzXoKWElxtVw+kX9zTm6xie1qihj5f0R6UPgfqadWqYS2tiJgGi4GDVzB/yJTjvVg==",
+  "dgSpecHash": "WDgt/+XjLuK3SAj9p+BPqK+QLYrN2VQbIqPtd6xhiWZe5Rpnj2qJHR6F0y7FIimp0o3Ui2Ro6ltZlOhAeZSqcA==",
   "success": true,
-  "projectFilePath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\MISA.AMIS.KeToan.API.csproj",
+  "projectFilePath": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\MISA.AMIS.KeToan.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ACER\\.nuget\\packages\\closedxml\\0.97.0\\closedxml.0.97.0.nupkg.sha512",
     "C:\\Users\\ACER\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

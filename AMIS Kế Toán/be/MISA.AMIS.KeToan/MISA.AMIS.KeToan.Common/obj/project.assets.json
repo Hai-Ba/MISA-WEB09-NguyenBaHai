@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj",
+      "projectUniqueName": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj",
       "projectName": "MISA.AMIS.KeToan.Common",
-      "projectPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj",
+      "projectPath": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj",
       "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\obj\\",
+      "outputPath": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",

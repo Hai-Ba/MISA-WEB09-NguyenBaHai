@@ -845,6 +845,7 @@
       },
       "MISA.AMIS.KeToan.BL/1.0.0": {
         "dependencies": {
+          "ClosedXML": "0.97.0",
           "MISA.AMIS.KeToan.Common": "1.0.0",
           "MISA.AMIS.KeToan.DL": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"

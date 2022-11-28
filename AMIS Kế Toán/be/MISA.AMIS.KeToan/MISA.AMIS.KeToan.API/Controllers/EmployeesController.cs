@@ -12,6 +12,8 @@ using MySqlConnector;
 using System.Data;
 using System.Runtime.Versioning;
 using Microsoft.AspNetCore.Http;
+using System.Globalization;
+using System.IO;
 
 namespace MISA.AMIS.KeToan.API.Controllers
 {
@@ -246,7 +248,14 @@ namespace MISA.AMIS.KeToan.API.Controllers
                             workSheet.Cell(startRowData, 2).Value = employee.EmployeeCode;
                             workSheet.Cell(startRowData, 3).Value = employee.EmployeeName;
                             workSheet.Cell(startRowData, 4).Value = employee.Gender;
-                            workSheet.Cell(startRowData, 5).Value = employee.DateOfBirth;
+                            if (employee.DateOfBirth != null)
+                            {
+                                workSheet.Cell(startRowData, 5).Value = ((DateTime)employee.DateOfBirth).ToString("dd/MM/yyyy");
+                            }
+                            else 
+                            {
+                                workSheet.Cell(startRowData, 5).Value = employee.DateOfBirth;
+                            }
                             workSheet.Cell(startRowData, 5).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                             workSheet.Cell(startRowData, 6).Value = employee.PositionName;
                             workSheet.Cell(startRowData, 7).Value = employee.DepartmentName;

@@ -1596,6 +1596,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "ClosedXML": "0.97.0",
           "MISA.AMIS.KeToan.Common": "1.0.0",
           "MISA.AMIS.KeToan.DL": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
@@ -5427,11 +5428,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\MISA.AMIS.KeToan.API.csproj",
+      "projectUniqueName": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\MISA.AMIS.KeToan.API.csproj",
       "projectName": "MISA.AMIS.KeToan.API",
-      "projectPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\MISA.AMIS.KeToan.API.csproj",
+      "projectPath": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\MISA.AMIS.KeToan.API.csproj",
       "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\obj\\",
+      "outputPath": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5448,11 +5449,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.BL\\MISA.AMIS.KeToan.BL.csproj": {
-              "projectPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.BL\\MISA.AMIS.KeToan.BL.csproj"
+            "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.BL\\MISA.AMIS.KeToan.BL.csproj": {
+              "projectPath": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.BL\\MISA.AMIS.KeToan.BL.csproj"
             },
-            "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj": {
-              "projectPath": "D:\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj"
+            "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj": {
+              "projectPath": "D:\\MisaGit\\MISA-WEB09-NguyenBaHai\\AMIS Kế Toán\\be\\MISA.AMIS.KeToan\\MISA.AMIS.KeToan.Common\\MISA.AMIS.KeToan.Common.csproj"
             }
           }
         }
