@@ -97,6 +97,15 @@ namespace MISA.AMIS.KeToan.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NO_DATA_IN_CURRENT_PAGE.
+        /// </summary>
+        public static string DevMsg_NoDataInPage {
+            get {
+                return ResourceManager.GetString("DevMsg_NoDataInPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to USER_WRONG_INPUT.
         /// </summary>
         public static string DevMsg_WrongInput {
@@ -156,6 +165,15 @@ namespace MISA.AMIS.KeToan.Common {
         public static string UserMsg_MissingInput {
             get {
                 return ResourceManager.GetString("UserMsg_MissingInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trang hiện tại không có dữ liệu để xuất.
+        /// </summary>
+        public static string UserMsg_NoDataInPage {
+            get {
+                return ResourceManager.GetString("UserMsg_NoDataInPage", resourceCulture);
             }
         }
         

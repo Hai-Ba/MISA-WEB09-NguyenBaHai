@@ -54,6 +54,8 @@ namespace MISA.AMIS.KeToan.Common.Entities.DTO
             ErrorCode = errorCode;
             UserMsg = userMsg;
             DevMsg = devMsg;
+            MoreInfo = "";
+            TraceId = "";
         }
 
         public ErrorResult(Exceptions errorCode, string? userMsg, object? devMsg, string? moreInfo, string? traceId)

@@ -130,6 +130,9 @@
   <data name="DevMsg_MissingInput" xml:space="preserve">
     <value>USER_MISSING_INPUT</value>
   </data>
+  <data name="DevMsg_NoDataInPage" xml:space="preserve">
+    <value>NO_DATA_IN_CURRENT_PAGE</value>
+  </data>
   <data name="DevMsg_WrongInput" xml:space="preserve">
     <value>USER_WRONG_INPUT</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="UserMsg_MissingInput" xml:space="preserve">
     <value>Nhập thiếu trường</value>
+  </data>
+  <data name="UserMsg_NoDataInPage" xml:space="preserve">
+    <value>Trang hiện tại không có dữ liệu để xuất</value>
   </data>
   <data name="UserMsg_WrongInput" xml:space="preserve">
     <value>Nhập sai định dạng</value>

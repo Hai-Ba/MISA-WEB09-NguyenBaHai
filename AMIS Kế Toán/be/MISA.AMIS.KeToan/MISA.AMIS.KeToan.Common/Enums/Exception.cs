@@ -22,5 +22,8 @@ namespace MISA.AMIS.KeToan.Common.Enums
 
         //Trường dữ liệu chưa được điền
         MissingField = 5,
+
+        //Trường hợp trang hiện tại không có dữ liệu
+        NoDataInPage = 6,
     }
 }

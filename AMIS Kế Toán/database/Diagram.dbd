@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Devart (www.devart.com), the Database Diagram File -->
+<!-- Modifying this generated file will probably render it invalid -->
+<DevartDatabaseDiagram>
+  <SchemaVersion>1.3</SchemaVersion>
+  <DatabaseProvider>59f90733-4d68-4fdf-82a7-f0fcbf5460aa</DatabaseProvider>
+  <Connection>
+    <ConnectionModel>
+      <PropertyValue Name="Database">59f90733-4d68-4fdf-82a7-f0fcbf5460aa</PropertyValue>
+      <PropertyValue Name="ConnectionString" xml:space="preserve">User Id=root;Host=localhost;Character Set=utf8</PropertyValue>
+      <PropertyValue Name="ExecutionTimeout">0</PropertyValue>
+    </ConnectionModel>
+  </Connection>
+  <Settings>
+    <DbDiagramOptions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <CustomProperties />
+    </DbDiagramOptions>
+    <Options xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PageOptions">
+      <TopLeftMargins>
+        <Width>39.3700787401575 in/100</Width>
+        <Height>39.3700787401575 in/100</Height>
+      </TopLeftMargins>
+      <BottomRightMargins>
+        <Width>39.3700787401575 in/100</Width>
+        <Height>39.3700787401575 in/100</Height>
+      </BottomRightMargins>
+      <PaperSize>
+        <Width>827 in/100</Width>
+        <Height>1169 in/100</Height>
+      </PaperSize>
+    </Options>
+    <Options xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PrintOptions" />
+    <Options xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ViewOptions">
+      <ShadowOffset>
+        <X>4 px</X>
+        <Y>4 px</Y>
+      </ShadowOffset>
+      <CustomProperties />
+    </Options>
+  </Settings>
+  <VirtualRelations>
+    <RelationCount>0</RelationCount>
+  </VirtualRelations>
+  <Diagram Version="1.26.0.0">
+    <DiagramModel>
+      <Model xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DDRootModel">
+        <CustomProperties>
+          <OID>0</OID>
+        </CustomProperties>
+        <Children>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>1</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>340 px</X>
+              <Y>10 px</Y>
+            </Location>
+            <Size>
+              <Width>223 px</Width>
+              <Height>267 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.department</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="TableModel">
+            <CustomProperties>
+              <OID>2</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>41 px</X>
+              <Y>41 px</Y>
+            </Location>
+            <Size>
+              <Width>242 px</Width>
+              <Height>539 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.employee</Path>
+              <TypeName>Table</TypeName>
+            </DbOid>
+            <Compartments>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
+              <TriggersCollapsed>True</TriggersCollapsed>
+            </Compartments>
+          </Model>
+          <Model xsi:type="RelationLinkModel">
+            <CustomProperties>
+              <OID>3</OID>
+              <Comment>4</Comment>
+              <OutModel>2</OutModel>
+              <InModel>1</InModel>
+              <OutPort>5</OutPort>
+              <InPort>6</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port>
+                <Location>
+                  <X>242.8 px</X>
+                  <Y>269.25103926097 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>5</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+              <Port>
+                <Location>
+                  <X>0.100000000000023 px</X>
+                  <Y>133.877830188679 px</Y>
+                </Location>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
+                <CustomProperties>
+                  <OID>6</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
+            </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>303 px</X>
+                <Y>310.25103926097 px</Y>
+              </PointD>
+              <PointD>
+                <X>303 px</X>
+                <Y>143.877830188679 px</Y>
+              </PointD>
+            </BendPoints>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.employee.FK_employee_department_DepartmentID</Path>
+              <TypeName>ForeignKey</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="RelationCommentModel">
+            <CustomProperties>
+              <OID>4</OID>
+              <HolderModel>3</HolderModel>
+              <Port>7</Port>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
+              <Port xsi:type="LinkPort">
+                <Location>
+                  <X>-20 px</X>
+                  <Y>83.1866166535481 px</Y>
+                </Location>
+                <Anchors>None</Anchors>
+                <Align>Right</Align>
+                <CustomProperties>
+                  <OID>7</OID>
+                  <PortType>FixedAnchor</PortType>
+                </CustomProperties>
+                <LinkPortAnchor>OutPoint</LinkPortAnchor>
+              </Port>
+            </PortAnchors>
+            <CommentOffset>
+              <X>7 px</X>
+              <Y>19.74896073903 px</Y>
+            </CommentOffset>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>8</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>615 px</X>
+              <Y>401 px</Y>
+            </Location>
+            <Size>
+              <Width>222 px</Width>
+              <Height>46 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_department_GetAll</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>9</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>885 px</X>
+              <Y>401 px</Y>
+            </Location>
+            <Size>
+              <Width>307 px</Width>
+              <Height>46 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_CheckDuplicateCode</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>10</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>1225 px</X>
+              <Y>401 px</Y>
+            </Location>
+            <Size>
+              <Width>211 px</Width>
+              <Height>46 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_Delete</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>11</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>1475 px</X>
+              <Y>401 px</Y>
+            </Location>
+            <Size>
+              <Width>248 px</Width>
+              <Height>46 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_DeleteMany</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>12</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>615 px</X>
+              <Y>491 px</Y>
+            </Location>
+            <Size>
+              <Width>208 px</Width>
+              <Height>46 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_GetAll</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>13</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>865 px</X>
+              <Y>491 px</Y>
+            </Location>
+            <Size>
+              <Width>259 px</Width>
+              <Height>46 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_GetBiggestID</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>14</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>1165 px</X>
+              <Y>491 px</Y>
+            </Location>
+            <Size>
+              <Width>224 px</Width>
+              <Height>46 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_GetByID</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>15</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>1265 px</X>
+              <Y>41 px</Y>
+            </Location>
+            <Size>
+              <Width>237 px</Width>
+              <Height>79 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_GetPaging</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>16</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>615 px</X>
+              <Y>41 px</Y>
+            </Location>
+            <Size>
+              <Width>282 px</Width>
+              <Height>317 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_Insert</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+          <Model xsi:type="StoredProcModel">
+            <CustomProperties>
+              <OID>17</OID>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <Location>
+              <X>945 px</X>
+              <Y>41 px</Y>
+            </Location>
+            <Size>
+              <Width>282 px</Width>
+              <Height>317 px</Height>
+            </Size>
+            <DbOid>
+              <Path>`misaamisketoan.nbhhai.gpbl_development`.Proc_employee_Update</Path>
+              <TypeName>Procedure</TypeName>
+            </DbOid>
+          </Model>
+        </Children>
+        <ViewPort>
+          <ScaleMode>Free</ScaleMode>
+          <Scale>0.9053942</Scale>
+          <Location>
+            <X>25.4032701098948 px</X>
+            <Y>-19.8808374230284 px</Y>
+          </Location>
+        </ViewPort>
+      </Model>
+    </DiagramModel>
+  </Diagram>
+</DevartDatabaseDiagram>

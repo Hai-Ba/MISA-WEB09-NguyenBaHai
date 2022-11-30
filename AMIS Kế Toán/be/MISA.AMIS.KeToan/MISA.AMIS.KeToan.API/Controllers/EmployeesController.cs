@@ -126,7 +126,7 @@ namespace MISA.AMIS.KeToan.API.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
                     DevMsg = Resources.DevMsg_Exception,
                     UserMsg = Resources.UserMsg_Exception,
@@ -191,92 +191,15 @@ namespace MISA.AMIS.KeToan.API.Controllers
                 var employees = _employeeBL.GetEmployeeByPaging(keyword, limit, pageNumber);
                 if (employees != null && employees.Count > 0)
                 {
-                    using (var workbook = new XLWorkbook())
-                    {
-                        IXLWorksheet workSheet = workbook.Worksheets.Add("Employees");//Name Worksheet
-                        var startRowData = 3;//Start from row 3
-                        int count = 0;//Number of row data
-                        var endRowData = startRowData + limit;//End at row 3 + limit
-                        #region Tiêu đề cho file excel
-                        workSheet.Range("A1:I1").Row(1).Merge();
-                        workSheet.Cell("A1").Value = "DANH SÁCH NHÂN VIÊN";
-                        workSheet.Range("A1").Style.Font.FontSize = 16;
-                        workSheet.Range("A1").Style.Font.SetFontName("Arial");
-                        workSheet.Range("A1").Style.Font.Bold = true;
-                        workSheet.Cell("A1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-                        workSheet.Range("A2:I2").Row(1).Merge();
-                        workSheet.Row(1).Height = 20.25;
-                        workSheet.Row(2).Height = 21.75;
-                        workSheet.Range("A3:I3").Style.Fill.SetBackgroundColor(XLColor.LightGray);
-                        workSheet.Range("A3:I3").Style.Font.SetFontName("Arial");
-                        workSheet.Range("A3:I3").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-                        workSheet.Range("A3:I3").Style.Font.Bold = true;
-                        workSheet.Range($"A3:I{endRowData}").Style.Alignment.WrapText = true;
-                        workSheet.Range($"A3:I{endRowData}").Style.Border.SetInsideBorder(XLBorderStyleValues.Thin);
-                        workSheet.Range($"A3:I{endRowData}").Style.Border.SetOutsideBorder(XLBorderStyleValues.Thin);
-                        #endregion
-                        //Set column width
-                        workSheet.Column("A").Width = 4.3;
-                        workSheet.Column("B").Width = 15.3;
-                        workSheet.Column("C").Width = 26;
-                        workSheet.Column("D").Width = 12;
-                        workSheet.Column("E").Width = 15.3;
-                        workSheet.Column("F").Width = 26;
-                        workSheet.Column("G").Width = 25;
-                        workSheet.Column("H").Width = 15.3;
-                        workSheet.Column("I").Width = 26;
-
-                        workSheet.Row(startRowData).Height = 15;
-                        workSheet.Row(startRowData).Style.Font.FontSize = 10;
-                        workSheet.Cell(startRowData, 1).Value = "STT";
-                        workSheet.Cell(startRowData, 2).Value = "Mã nhân viên";
-                        workSheet.Cell(startRowData, 3).Value = "Tên nhân viên";
-                        workSheet.Cell(startRowData, 4).Value = "Giới tính";
-                        workSheet.Cell(startRowData, 5).Value = "Ngày sinh";
-                        workSheet.Cell(startRowData, 6).Value = "Chức danh";
-                        workSheet.Cell(startRowData, 7).Value = "Tên đơn vị";
-                        workSheet.Cell(startRowData, 8).Value = "Số tài khoản";
-                        workSheet.Cell(startRowData, 9).Value = "Tên ngân hàng";
-                        foreach (var employee in employees)
-                        {
-                            startRowData++;
-                            count++;
-                            workSheet.Row(startRowData).Height = 15;
-                            workSheet.Row(startRowData).Style.Font.SetFontName("Times New Roman");
-                            workSheet.Cell(startRowData, 1).Value = count;
-                            workSheet.Cell(startRowData, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
-                            workSheet.Cell(startRowData, 2).Value = employee.EmployeeCode;
-                            workSheet.Cell(startRowData, 3).Value = employee.EmployeeName;
-                            workSheet.Cell(startRowData, 4).Value = employee.Gender;
-                            if (employee.DateOfBirth != null)
-                            {
-                                workSheet.Cell(startRowData, 5).Value = ((DateTime)employee.DateOfBirth).ToString("dd/MM/yyyy");
-                            }
-                            else 
-                            {
-                                workSheet.Cell(startRowData, 5).Value = employee.DateOfBirth;
-                            }
-                            workSheet.Cell(startRowData, 5).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
-                            workSheet.Cell(startRowData, 6).Value = employee.PositionName;
-                            workSheet.Cell(startRowData, 7).Value = employee.DepartmentName;
-                            workSheet.Cell(startRowData, 8).Value = employee.BankAccountNumber;
-                            workSheet.Cell(startRowData, 8).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
-                            workSheet.Cell(startRowData, 9).Value = employee.BankName;
-                        }
-
-                        using (var stream = new MemoryStream())
-                        {
-                            workbook.SaveAs(stream);
-                            var content = stream.ToArray();
-
-                            return File(
+                    byte[] content = _employeeBL.ExportExcel(employees, limit);
+                    return File(
                                 content,
                                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                                 "employees.xlsx");
-                        }
-                    }
                 }
-                return StatusCode(StatusCodes.Status200OK);
+                return StatusCode(StatusCodes.Status404NotFound, new ErrorResult(
+                    Exceptions.NoDataInPage, Resources.UserMsg_NoDataInPage, Resources.DevMsg_NoDataInPage
+                    ));
             }
             catch (Exception ex)
             {

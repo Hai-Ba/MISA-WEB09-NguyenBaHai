@@ -1,4 +1,5 @@
-﻿using MISA.AMIS.KeToan.Common;
+﻿using ClosedXML.Excel;
+using MISA.AMIS.KeToan.Common;
 using MISA.AMIS.KeToan.Common.Entities;
 using System;
 using System.Collections.Generic;
@@ -46,5 +47,7 @@ namespace MISA.AMIS.KeToan.BL
         /// <param name="employeeID">Mã Guid id của nhân viên cần sửa</param>
         /// <returns></returns>
         public ResponseService UpdateAnEmployee(Employee employee, Guid employeeID);
+
+        public byte[] ExportExcel(List<Employee> employees, int limit);
     }
 }

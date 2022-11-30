@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using MISA.AMIS.KeToan.Common.CustomAttributes;
 using System.Text.RegularExpressions;
 using System.Numerics;
+using ClosedXML.Excel;
 
 namespace MISA.AMIS.KeToan.BL
 {
@@ -84,7 +85,7 @@ namespace MISA.AMIS.KeToan.BL
                 if (employeeValidated.IsSuccess)
                 {
                     Guid idEmployee = _employeeDL.InsertNewEmployee(employee);
-                    if (idEmployee != Guid.Empty) 
+                    if (idEmployee != Guid.Empty)
                     {
                         return new ResponseService(true, idEmployee);
                     }
@@ -119,7 +120,7 @@ namespace MISA.AMIS.KeToan.BL
                     new ErrorResult(Exceptions.DuplicateCode, Resources.UserMsg_DuplicateCode, Resources.DevMsg_DuplicateCode));
             }
             return employeeValidated;
-            
+
         }
 
         /// <summary>
@@ -147,7 +148,7 @@ namespace MISA.AMIS.KeToan.BL
                     //Validate cho require prop
                     if (propVal == null || propVal.ToString().Trim() == "")
                     {
-                        return new ResponseService(false, 
+                        return new ResponseService(false,
                             new ErrorResult(Exceptions.MissingField, Resources.UserMsg_MissingInput, Resources.DevMsg_MissingInput));
                     }
                 }
@@ -166,9 +167,9 @@ namespace MISA.AMIS.KeToan.BL
                 if ((attr as MyAttributes).ValidAge)
                 {
                     //Validate cho Age
-                    if (propVal != null) 
+                    if (propVal != null)
                     {
-                        if (AgeValidation(propVal) == false) 
+                        if (AgeValidation(propVal) == false)
                         {
                             return new ResponseService(false,
                             new ErrorResult(Exceptions.InvalidData, Resources.UserMsg_WrongInput, Resources.DevMsg_WrongInput));
@@ -190,7 +191,7 @@ namespace MISA.AMIS.KeToan.BL
                 if ((attr as MyAttributes).ValidEmail)
                 {
                     //Validate cho Email
-                    if (propVal != null)
+                    if (propVal != null && propVal.ToString().Trim() != "")
                     {
                         if (EmailValidation(propVal.ToString()) == false)
                         {
@@ -202,7 +203,7 @@ namespace MISA.AMIS.KeToan.BL
                 if ((attr as MyAttributes).ValidPhone)
                 {
                     //Validate cho Phone Number
-                    if (propVal != null)
+                    if (propVal != null && propVal.ToString().Trim() != "")
                     {
                         if (PhoneValidation(propVal.ToString()) == false)
                         {
@@ -214,7 +215,7 @@ namespace MISA.AMIS.KeToan.BL
                 if ((attr as MyAttributes).ValidLengthNumber15)
                 {
                     //Validate cho Max 15 Number
-                    if (propVal != null)
+                    if (propVal != null && propVal.ToString().Trim() != "")
                     {
                         if (Max15NumberValidation(propVal.ToString()) == false)
                         {
@@ -233,11 +234,11 @@ namespace MISA.AMIS.KeToan.BL
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public bool CodeValidation(string? code) 
+        public bool CodeValidation(string? code)
         {
             string pattern = @"(^[N][V]\d{5,6}$)";
             Regex codeRG = new Regex(pattern);
-            if (code != null) 
+            if (code != null)
             {
                 return codeRG.IsMatch(code);
             }
@@ -252,7 +253,7 @@ namespace MISA.AMIS.KeToan.BL
         /// <returns></returns>
         public bool AgeValidation(object? date)
         {
-            if (date != null) 
+            if (date != null)
             {
                 var age = DateTime.Today.Year - Convert.ToDateTime(date).Year;
                 return (age <= 50 && age >= 18);
@@ -284,7 +285,7 @@ namespace MISA.AMIS.KeToan.BL
         public bool EmailValidation(string? email)
         {
             Regex codeRG = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-            if (email != null) 
+            if (email != null)
             {
                 return codeRG.IsMatch(email);
             }
@@ -323,6 +324,88 @@ namespace MISA.AMIS.KeToan.BL
             return true;
         }
 
+        public byte[] ExportExcel(List<Employee> employees, int limit)
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                IXLWorksheet workSheet = workbook.Worksheets.Add("Employees");//Name Worksheet
+                var startRowData = 3;//Start from row 3
+                int count = 0;//Number of row data
+                var endRowData = startRowData + limit;//End at row 3 + limit
+                #region Tiêu đề cho file excel
+                workSheet.Range("A1:I1").Row(1).Merge();
+                workSheet.Cell("A1").Value = "DANH SÁCH NHÂN VIÊN";
+                workSheet.Range("A1").Style.Font.FontSize = 16;
+                workSheet.Range("A1").Style.Font.SetFontName("Arial");
+                workSheet.Range("A1").Style.Font.Bold = true;
+                workSheet.Cell("A1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                workSheet.Range("A2:I2").Row(1).Merge();
+                workSheet.Row(1).Height = 20.25;
+                workSheet.Row(2).Height = 21.75;
+                workSheet.Range("A3:I3").Style.Fill.SetBackgroundColor(XLColor.LightGray);
+                workSheet.Range("A3:I3").Style.Font.SetFontName("Arial");
+                workSheet.Range("A3:I3").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                workSheet.Range("A3:I3").Style.Font.Bold = true;
+                workSheet.Range($"A3:I{endRowData}").Style.Alignment.WrapText = true;
+                workSheet.Range($"A3:I{endRowData}").Style.Border.SetInsideBorder(XLBorderStyleValues.Thin);
+                workSheet.Range($"A3:I{endRowData}").Style.Border.SetOutsideBorder(XLBorderStyleValues.Thin);
+                #endregion
+                //Set column width
+                workSheet.Column("A").Width = 4.3;
+                workSheet.Column("B").Width = 15.3;
+                workSheet.Column("C").Width = 26;
+                workSheet.Column("D").Width = 12;
+                workSheet.Column("E").Width = 15.3;
+                workSheet.Column("F").Width = 26;
+                workSheet.Column("G").Width = 25;
+                workSheet.Column("H").Width = 15.3;
+                workSheet.Column("I").Width = 26;
+
+                workSheet.Row(startRowData).Height = 15;
+                workSheet.Row(startRowData).Style.Font.FontSize = 10;
+                workSheet.Cell(startRowData, 1).Value = "STT";
+                workSheet.Cell(startRowData, 2).Value = "Mã nhân viên";
+                workSheet.Cell(startRowData, 3).Value = "Tên nhân viên";
+                workSheet.Cell(startRowData, 4).Value = "Giới tính";
+                workSheet.Cell(startRowData, 5).Value = "Ngày sinh";
+                workSheet.Cell(startRowData, 6).Value = "Chức danh";
+                workSheet.Cell(startRowData, 7).Value = "Tên đơn vị";
+                workSheet.Cell(startRowData, 8).Value = "Số tài khoản";
+                workSheet.Cell(startRowData, 9).Value = "Tên ngân hàng";
+                foreach (var employee in employees)
+                {
+                    startRowData++;
+                    count++;
+                    workSheet.Row(startRowData).Height = 15;
+                    workSheet.Row(startRowData).Style.Font.SetFontName("Times New Roman");
+                    workSheet.Cell(startRowData, 1).Value = count;
+                    workSheet.Cell(startRowData, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
+                    workSheet.Cell(startRowData, 2).Value = employee.EmployeeCode;
+                    workSheet.Cell(startRowData, 3).Value = employee.EmployeeName;
+                    workSheet.Cell(startRowData, 4).Value = employee.Gender;
+                    if (employee.DateOfBirth != null)
+                    {
+                        workSheet.Cell(startRowData, 5).Value = ((DateTime)employee.DateOfBirth).ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        workSheet.Cell(startRowData, 5).Value = employee.DateOfBirth;
+                    }
+                    workSheet.Cell(startRowData, 5).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                    workSheet.Cell(startRowData, 6).Value = employee.PositionName;
+                    workSheet.Cell(startRowData, 7).Value = employee.DepartmentName;
+                    workSheet.Cell(startRowData, 8).Value = employee.BankAccountNumber;
+                    workSheet.Cell(startRowData, 8).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
+                    workSheet.Cell(startRowData, 9).Value = employee.BankName;
+                }
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    byte[] content = stream.ToArray();
+                    return content;
+                }
+            }
+        }
         #endregion
     }
 }

@@ -1,5 +1,4 @@
 ﻿using MISA.AMIS.KeToan.Common.CustomAttributes;
-using MISA.AMIS.KeToan.Common.CustomValidations;
 using MISA.AMIS.KeToan.Common.Enums;
 using System.ComponentModel.DataAnnotations;
 
@@ -33,7 +32,6 @@ namespace MISA.AMIS.KeToan.Common.Entities
         /// <summary>
         /// Ngày sinh
         /// </summary>
-        //[ValidAge(ErrorMessage = "Employee's age must less or equal 50 and higher than 18")]
         [MyAttributes(ValidAge = true)]
         public DateTime? DateOfBirth { get; set; }
 
@@ -51,7 +49,6 @@ namespace MISA.AMIS.KeToan.Common.Entities
         /// <summary>
         /// Ngày cấp
         /// </summary>
-        //[CustomMaxDate(ErrorMessage = "Identity date must less or equal to current date")]
         [MyAttributes(ValidDate = true)]
         public DateTime? IdentityDate { get; set; }
 

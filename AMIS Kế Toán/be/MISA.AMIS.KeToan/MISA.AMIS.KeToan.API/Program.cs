@@ -24,9 +24,12 @@ builder.Services.AddCors(options =>
                       });
 });
 
-// Add services to the container.
+//Apply empty string pass to body
+    
 
-builder.Services.AddControllers();
+// Add services to the container.
+builder.Services.AddControllers().AddNewtonsoftJson();
+//x => x.AllowEmptyInputInBodyModelBinding = true
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 //Dependency Injection

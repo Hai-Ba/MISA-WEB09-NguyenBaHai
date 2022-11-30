@@ -128,7 +128,7 @@ namespace MISA.AMIS.KeToan.API.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError, new
+                return StatusCode(StatusCodes.Status500InternalServerError, new ErrorResult
                 {
                     ErrorCode = Exceptions.Exception,
                     DevMsg = Resources.DevMsg_Exception,
